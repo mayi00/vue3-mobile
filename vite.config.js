@@ -1,6 +1,8 @@
 import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import path from 'path'
+import vueSetupExtend from 'vite-plugin-vue-setup-extend'
+const postCssPxToRem = require('postcss-pxtorem')
 
 export default ({ mode }) => {
   // 获取当前环境变量
@@ -16,7 +18,8 @@ export default ({ mode }) => {
     // 环境配置
     mode: mode,
     // 需要用到的插件数组
-    plugins: [vue()],
+    // 使用 vite-plugin-vue-setup-extend 插件以便在 setup script 中直接使用 name 属性，<script setup name="Home"></script>
+    plugins: [vue(), vueSetupExtend()],
     // 静态资源服务文件夹
     publicDir: 'public',
     resolve: {
@@ -31,11 +34,24 @@ export default ({ mode }) => {
       // 配置 CSS modules 的行为。选项将被传递给 postcss-modules
       modules: {},
       // 内联的 PostCSS 配置（格式同 postcss.config.js）
-      postcss: {},
+      postcss: {
+        plugins: [
+          postCssPxToRem({
+            rootValue: 37.5, // 1rem 的大小
+            propList: ['*'] // 需要转换的属性， *-全部转换
+          })
+        ]
+      },
       // 指定传递给 CSS 预处理器的选项，文件扩展名用作选项的键
       preprocessorOptions: {
         less: {
-          avascriptEnabled: true
+          avascriptEnabled: true,
+          // 全局引入 less 变量 --方式 1
+          additionalData: `@import "${path.resolve(__dirname, 'src/styles/variables.less')}"; `,
+          // 全局引入 less 变量 --方式 2
+          // modifyVars: {
+          //   hack: `true; @import (reference) "${path.resolve('src/styles/variables.less')}";`,
+          // },
         }
       },
       // 在开发过程中是否启用 sourcemap
@@ -59,10 +75,10 @@ export default ({ mode }) => {
       strictPort: false,
       // 在开发服务器启动时自动打开
       open: true,
-      // 开发代理
+      // 反向代理
       proxy: {
         '/api': {
-          target: env.VITE_APP_BASE_API,
+          target: env.VITE_APP_BASE_URL,
           changeOrigin: true,
           rewrite: path => path.replace(/^\/api/, '')
         }
@@ -86,7 +102,13 @@ export default ({ mode }) => {
         output: {
           chunkFileNames: 'static/js/[name]-[hash].js',
           entryFileNames: 'static/js/[name]-[hash].js',
-          assetFileNames: 'static/[ext]/[name]-[hash].[ext]'
+          assetFileNames: 'static/[ext]/[name]-[hash].[ext]',
+          // 打包文件拆分
+          manualChunks(id) {
+            if (id.includes('node_modules')) {
+              return id.toString().split('node_modules/')[1].split('/')[0].toString()
+            }
+          }
         }
       },
       minify: 'terser',

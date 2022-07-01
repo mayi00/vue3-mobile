@@ -1,20 +1,17 @@
 <template>
-  <div class="home-container">
+  <div class="home-container container">
+    <img src="@/assets/images/ss.jpg" alt="" style="width: 200px">
+    <img src="@/assets/images/ss.jpg" alt="" style="width: 200px">
+    <img src="@/assets/images/ss.jpg" alt="" style="width: 200px">
+    <img src="@/assets/images/ss.jpg" alt="" style="width: 200px">
     <img src="@/assets/images/ss.jpg" alt="" style="width: 200px">
     <p class="home">Hello World</p>
-    <p class="home">{{ count }}</p>
-    <button @click="count++">+1</button>
-    <button @click="handleRouterPush">跳转至快捷入口列表页面</button>
+    <p class="home">{{ count }} <button @click="count++">+1</button></p>
+    <button @click="handleRouterPush">点击跳转至快捷入口列表页面</button>
   </div>
 </template>
 
-<script>
-export default {
-  name: 'Home'
-}
-</script>
-
-<script setup>
+<script setup name="Home">
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
