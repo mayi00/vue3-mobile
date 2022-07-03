@@ -11,7 +11,7 @@ import Vconsole from 'vconsole'
 const env = import.meta.env
 console.log('当前环境变量==>', env)
 // 测试环境生成 Vconsole
-env.VITE_NODE_ENV === 'test' ? new Vconsole : ''
+// env.VITE_NODE_ENV === 'test' ? new Vconsole : ''
 
 const app = createApp(App)
 
