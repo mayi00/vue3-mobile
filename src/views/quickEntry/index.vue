@@ -11,8 +11,9 @@ import { routes } from '@/router'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
+
 // 跳转路由
-const handleRouterPush = (path) => {
+function handleRouterPush(path) {
   router.push({ path })
 }
 </script>
