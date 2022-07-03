@@ -2,9 +2,10 @@ import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import path from 'path'
 import vueSetupExtend from 'vite-plugin-vue-setup-extend'
+import { viteVConsole } from 'vite-plugin-vconsole'
 const postCssPxToRem = require('postcss-pxtorem')
 
-export default ({ mode }) => {
+export default ({ command, mode }) => {
   // 获取当前环境变量
   const env = loadEnv(mode, process.cwd())
   console.log('>>> 当前环境==>', mode)
@@ -18,8 +19,21 @@ export default ({ mode }) => {
     // 环境配置
     mode: mode,
     // 需要用到的插件数组
-    // 使用 vite-plugin-vue-setup-extend 插件以便在 setup script 中直接使用 name 属性，<script setup name="Home"></script>
-    plugins: [vue(), vueSetupExtend()],
+    plugins: [
+      vue(),
+      // 使用 vite-plugin-vue-setup-extend 插件以便在 setup script 中直接使用 name 属性，<script setup name="Home"></script>
+      vueSetupExtend(),
+      // VConsole 调试工具配置
+      viteVConsole({
+        entry: path.resolve('src/main.js'), // 入口文件，或者可以使用这个配置: [path.resolve('src/main.ts')]
+        localEnabled: false, // 本地是否启用
+        enabled: mode === 'test', // 是否启用
+        config: {
+          maxLogNumber: 1000,
+          // theme: 'dark' // 主题颜色
+        }
+      })
+    ],
     // 静态资源服务文件夹
     publicDir: 'public',
     resolve: {
