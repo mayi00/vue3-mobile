@@ -5,7 +5,7 @@ import vueSetupExtend from 'vite-plugin-vue-setup-extend'
 import { viteVConsole } from 'vite-plugin-vconsole'
 const postCssPxToRem = require('postcss-pxtorem')
 
-export default ({ command, mode }) => {
+export default ({ mode }) => {
   // 获取当前环境变量
   const env = loadEnv(mode, process.cwd())
   console.log('>>> 当前环境==>', mode)
@@ -26,7 +26,7 @@ export default ({ command, mode }) => {
       // VConsole 调试工具配置
       viteVConsole({
         entry: path.resolve('src/main.js'), // 入口文件，或者可以使用这个配置: [path.resolve('src/main.ts')]
-        localEnabled: true, // 本地是否启用
+        localEnabled: false, // 本地是否启用
         enabled: mode === 'test', // 是否启用
         config: {
           maxLogNumber: 1000,
@@ -52,7 +52,8 @@ export default ({ command, mode }) => {
         plugins: [
           postCssPxToRem({
             rootValue: 37.5, // 1rem 的大小
-            propList: ['*'] // 需要转换的属性， *-全部转换
+            propList: ['*'], // 需要转换的属性， *-全部转换
+            unitPrecision: 6 // 精度，保留小数位数
           })
         ]
       },
@@ -127,7 +128,7 @@ export default ({ command, mode }) => {
       },
       minify: 'terser',
       terserOptions: {
-        // 打包移除 console.log，debugger
+        // 生产环境打包移除 console.log，debugger
         compress: {
           drop_console: env.VITE_NODE_ENV === 'production',
           drop_debugger: env.VITE_NODE_ENV === 'production'
