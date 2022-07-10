@@ -3,8 +3,8 @@
  * @Author      : huazf
  * @Date        : 2022-06-30
  * @LastEditors : huazf
- * @LastEditTime: 2022-06-30
- * @FilePath    : \vue3-vite\src\route\index.js
+ * @LastEditTime: 2022-07-10
+ * @FilePath    : \vue3-demo\src\router\index.js
  */
 
 import { createRouter, createWebHashHistory } from 'vue-router'
@@ -42,8 +42,8 @@ router.beforeEach((to, from, next) => {
   // 路由发生变化修改页面 title
   if (to.meta.title) {
     document.title = to.meta.title
-  } else {
-    document.title = 'Vue3-vite'
+  } else if (!document.title) {
+    document.title = 'vue3-demo'
   }
   next()
 })

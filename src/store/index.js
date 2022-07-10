@@ -6,7 +6,8 @@ const getDefaultState = () => {
     // 用户信息
     userInfo: {
       id: '',
-      name: '',
+      name: '张三',
+      sex: '男'
     },
   }
 }
@@ -29,7 +30,7 @@ const plugins = [
   // 默认存储在 localStorage
   createPersistedState({
     // 本地存储 key
-    key: 'vue3-vite'
+    key: 'vue3-demo'
   })
 ]
 
