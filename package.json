@@ -1,10 +1,10 @@
 {
   "name": "vue3-demo",
   "private": true,
-  "version": "0.0.1",
-  "author": "huazf",
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "dev": "vite --mode dev",
+    "dev": "vite --mode development",
     "test": "vite --mode test",
     "build:test": "vite build --mode test",
     "build:prod": "vite build --mode production",
@@ -12,20 +12,22 @@
   },
   "dependencies": {
     "normalize.css": "^8.0.1",
-    "vue": "^3.2.25",
-    "vue-router": "^4.0.16",
-    "vuex": "^4.0.2",
-    "vuex-persistedstate": "^4.1.0"
+    "vant": "^3.5.2",
+    "vue": "^3.2.37",
+    "vue-router": "^4.1.2",
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^2.3.3",
+    "@vitejs/plugin-vue": "^3.0.0",
+    "amfe-flexible": "^2.2.1",
     "less": "^4.1.3",
     "less-loader": "^11.0.0",
     "lib-flexible": "^0.3.2",
     "postcss-pxtorem": "^6.0.0",
-    "terser": "^5.14.1",
+    "terser": "^5.14.2",
+    "unplugin-vue-components": "^0.21.1",
     "vconsole": "^3.14.6",
-    "vite": "^2.9.9",
+    "vite": "^3.0.0",
     "vite-plugin-vconsole": "^1.2.2",
     "vite-plugin-vue-setup-extend": "^0.4.0"
   }

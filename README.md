@@ -1,4 +1,4 @@
-# vue3-demo
+# Vue3-demo
 
 > 基于 vue3 + vite 开发的移动端demo
 
@@ -22,6 +22,6 @@ npm run build:prod
 ## 开发访问
 
 ```bash
-http://localhost:3000
+http://localhost:5173
 
 ```
