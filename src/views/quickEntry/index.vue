@@ -1,12 +1,5 @@
-<template>
-  <div class="container">
-    <ul class="page-box">
-      <li class="page-item" v-for="(item, index) in routes" :key="index" @click="handleRouterPush(item.path)">{{ item.meta.title }}</li>
-    </ul>
-  </div>
-</template>
-
 <script setup name="QuickEntry">
+import { reactive } from 'vue'
 import { routes } from '@/router'
 import { useRouter } from 'vue-router'
 
@@ -17,6 +10,14 @@ function handleRouterPush(path) {
   router.push({ path })
 }
 </script>
+
+<template>
+  <div class="container">
+    <ul class="page-box">
+      <li class="page-item" v-for="(item, index) in routes" :key="index" @click="handleRouterPush(item.path)">{{ item.meta.title }}</li>
+    </ul>
+  </div>
+</template>
 
 <style lang="less" scoped>
 .page {

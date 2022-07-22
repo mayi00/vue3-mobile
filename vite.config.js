@@ -3,7 +3,9 @@ import vue from '@vitejs/plugin-vue'
 import path from 'path'
 import vueSetupExtend from 'vite-plugin-vue-setup-extend'
 import { viteVConsole } from 'vite-plugin-vconsole'
-const postCssPxToRem = require('postcss-pxtorem')
+import postCssPxToRem from 'postcss-pxtorem'
+import Components from 'unplugin-vue-components/vite'
+import { VantResolver } from 'unplugin-vue-components/resolvers'
 
 export default ({ mode }) => {
   // 获取当前环境变量
@@ -15,22 +17,26 @@ export default ({ mode }) => {
     // 项目根目录
     root: process.cwd(),
     // 公共基础路径
-    base: env.VITE_NODE_ENV === 'dev' ? '/' : '/vue3-demo/',
+    base: env.VITE_NODE_ENV === 'development' ? '/' : '/vue3-demo/',
     // 环境配置
-    mode: mode,
-    // 需要用到的插件数组
+    mode,
+    // 需要用到的插件
     plugins: [
       vue(),
-      // 使用 vite-plugin-vue-setup-extend 插件以便在 setup script 中直接使用 name 属性，<script setup name="Home"></script>
+      Components({
+        dirs: ['src/components'], // 默认导入组件文件夹，组件会自动导入
+        resolvers: [VantResolver()], // Vant 组件自动按需引入
+      }),
+      // vite-plugin-vue-setup-extend 插件可以在 script 标签中直接使用 name 属性:<script setup name="Home"></script>
       vueSetupExtend(),
       // VConsole 调试工具配置
       viteVConsole({
-        entry: path.resolve('src/main.js'), // 入口文件，或者可以使用这个配置: [path.resolve('src/main.ts')]
-        localEnabled: false, // 本地是否启用
-        enabled: mode === 'test', // 是否启用
+        entry: path.resolve('src/main.js'), // 入口文件，或者这样: [path.resolve('src/main.js')]
+        localEnabled: mode === 'test', // 本地是否启用
+        enabled: mode === 'test', // 是否启用，test 环境启用
         config: {
           maxLogNumber: 1000,
-          // theme: 'dark' // 主题颜色
+          theme: 'light' // 主题颜色 'dark'|'light'
         }
       })
     ],
@@ -52,8 +58,8 @@ export default ({ mode }) => {
         plugins: [
           postCssPxToRem({
             rootValue: 37.5, // 1rem 的大小
-            propList: ['*'], // 需要转换的属性， *-全部转换
-            unitPrecision: 6 // 精度，保留小数位数
+            propList: ['*'], // 需要转换的属性，*全部转换
+            unitPrecision: 6 // 转换精度，保留的小数位数
           })
         ]
       },
@@ -62,30 +68,22 @@ export default ({ mode }) => {
         less: {
           avascriptEnabled: true,
           // 全局引入 less 变量 --方式 1
-          additionalData: `@import "${path.resolve(__dirname, 'src/styles/variables.less')}"; `,
+          additionalData: `@import "${path.resolve(__dirname, 'src/assets/style/variables.less')}"; `
           // 全局引入 less 变量 --方式 2
           // modifyVars: {
-          //   hack: `true; @import (reference) "${path.resolve('src/styles/variables.less')}";`,
-          // },
+          //   hack: `true; @import (reference) "${path.resolve('src/assets/styles/variables.less')}";`,
+          // }
         }
       },
       // 在开发过程中是否启用 sourcemap
-      devSourcemap: false
+      devSourcemap: true
     },
-    json: {
-      // 是否支持从 .json 文件中进行按名导入
-      namedExports: true,
-      // 若设置为 true，导入的 JSON 会被转换为 export default JSON.parse("...")，这样会比转译成对象字面量性能更好，尤其是当 JSON 文件较大的时候。开启此项，则会禁用按名导入
-      stringify: false
-    },
-    // 调整控制台输出的级别 'info' | 'warn' | 'error' | 'silent'
-    logLevel: 'info',
     // 设为 false 可以避免 Vite 清屏而错过在终端中打印某些关键信息
     clearScreen: false,
     server: {
       host: '0.0.0.0',
       // 指定开发服务器端口
-      port: 3000,
+      // port: 5173,
       // 设为 true 时若端口已被占用则会直接退出，而不是尝试下一个可用端口
       strictPort: false,
       // 在开发服务器启动时自动打开
@@ -100,18 +98,8 @@ export default ({ mode }) => {
       }
     },
     build: {
-      // 浏览器兼容性 'modules' | 'esnext'
-      target: 'modules',
-      // 指定输出路径（相对于项目根目录)
-      outDir: 'dist',
-      // 指定生成静态资源的存放路径（相对于 build.outDir）
-      assetsDir: 'assets',
-      // 小于此阈值的导入或引用资源将内联为 base64 编码，以避免额外的 http 请求。设置为 0 可以完全禁用此项。
-      assetsInlineLimit: 4096,
       // 启用/禁用 CSS 代码拆分
       cssCodeSplit: true,
-      // 构建后是否生成 source map 文件 boolean | 'inline' | 'hidden'
-      sourcemap: false,
       // Rollup 打包配置，打包文件按照类型分文件夹显示
       rollupOptions: {
         output: {
@@ -128,7 +116,7 @@ export default ({ mode }) => {
       },
       minify: 'terser',
       terserOptions: {
-        // 生产环境打包移除 console.log，debugger
+        // 生产环境打包移除 console debugger
         compress: {
           drop_console: env.VITE_NODE_ENV === 'production',
           drop_debugger: env.VITE_NODE_ENV === 'production'
