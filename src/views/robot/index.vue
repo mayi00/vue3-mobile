@@ -2,7 +2,8 @@
 import { ref, reactive, getCurrentInstance, watch, nextTick } from 'vue'
 import ChatRight from './ChatRight.vue'
 import ChatLeft from './ChatLeft.vue'
-import { questionArr } from './question'
+import { getQingyunke } from '@/api/robot.js'
+
 const { proxy } = getCurrentInstance()
 
 const chatList = reactive([])
@@ -13,35 +14,35 @@ const inputRef = ref(null)
 // 发送
 function handleSend() {
   if (inputValue.value) {
+    getAnswer(inputValue.value)
     const result = {
       role: 'user',
       type: 'text',
       content: inputValue.value
     }
     chatList.push(result)
-    proxy.$refs.inputRef.focus()
     setTimeout(() => {
-      getAnswer(inputValue.value)
       inputValue.value = ''
     }, 0)
   }
+  proxy.$refs.inputRef.focus()
 }
 // 获取答案
 function getAnswer(word) {
-  const question = questionArr.find(item => {
-    return item.question.includes(word)
-  })
   const result = {
     role: 'robot',
     type: 'text',
     content: ''
   }
-  if (question) {
-    result.content = question.answer
-  } else {
-    result.content = '小爱正在学习中~'
-  }
-  chatList.push(result)
+  getQingyunke(word).then(res => {
+    if (res.result === 0) {
+      result.content = res.content.replace(/{br}/g, ' ')
+      chatList.push(result)
+    }
+  }).catch(() => {
+    result.content = '正在学习中~'
+    chatList.push(result)
+  })
 }
 
 watch(chatList, () => {
@@ -56,6 +57,7 @@ watch(chatList, () => {
 
 <template>
   <div class="container robot-container">
+    <van-nav-bar title="聊天机器人" />
     <!-- 聊天内容 -->
     <div class="chat-box">
       <ul ref="chatEl" class="chat-list">
