@@ -31,11 +31,11 @@ function handleRouterPush(path) {
     line-height: 50px;
 
     &:nth-child(2n) {
-      background-color: #f3f4f5;
+      background-color: #ccc;
     }
 
     &:nth-child(2n + 1) {
-      background-color: #d3d3d3;
+      background-color: #8e8e8e;
     }
   }
 }

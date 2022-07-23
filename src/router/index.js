@@ -3,7 +3,7 @@
  * @Author      : huazf
  * @Date        : 2022-06-30
  * @LastEditors : huazf
- * @LastEditTime: 2022-07-22
+ * @LastEditTime: 2022-07-23
  * @FilePath    : \vue3-demo\src\router\index.js
  */
 import { createRouter, createWebHashHistory } from 'vue-router'
@@ -26,6 +26,12 @@ export const routes = [
     component: () => import('@/views/home/index.vue'),
     meta: { title: '首页' }
   },
+  {
+    path: '/robot',
+    name: 'Robot',
+    component: () => import('@/views/robot/index.vue'),
+    meta: { title: '聊天机器人' }
+  }
 ]
 
 const router = createRouter({
