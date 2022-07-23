@@ -90,6 +90,12 @@ export default ({ mode }) => {
       open: true,
       // 反向代理
       proxy: {
+        // 智能聊天机器人代理
+        '/api/qingyunke': {
+          target: env.VITE_APP_BASE_URL_QINGYUNKE,
+          changeOrigin: true,
+          rewrite: path => path.replace(/^\/api\/qingyunke/, '')
+        },
         '/api': {
           target: env.VITE_APP_BASE_URL,
           changeOrigin: true,

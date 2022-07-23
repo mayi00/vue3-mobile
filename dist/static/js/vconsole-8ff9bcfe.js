@@ -1,4 +1,4 @@
-var commonjsGlobal="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof window?window:"undefined"!=typeof global?global:"undefined"!=typeof self?self:{};function getDefaultExportFromCjs(t){return t&&t.__esModule&&Object.prototype.hasOwnProperty.call(t,"default")?t.default:t}var vconsole_min={exports:{}};
+import{g as getDefaultExportFromCjs,c as commonjsGlobal}from"./axios-f09ad530.js";var vconsole_min={exports:{}};
 /*!
  * vConsole v3.14.6 (https://github.com/Tencent/vConsole)
  *
