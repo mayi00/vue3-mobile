@@ -19,12 +19,11 @@ function handleRouterPush() {
       <van-button @click="handleRouterPush">点击跳转至快捷入口列表页面</van-button>
     </div>
     <a href="http://www.baidu.com">baidu</a>
-    <HelloWorld></HelloWorld>
   </div>
 </template>
 
 <style lang="less" scoped>
 .home-container {
-  font-size: 32px;
+  // font-size: 32px;
 }
 </style>
