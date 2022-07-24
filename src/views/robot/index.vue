@@ -47,10 +47,7 @@ function getAnswer(word) {
 
 watch(chatList, () => {
   nextTick(() => {
-    setTimeout(() => {
-      // chatEl.value.scrollTo({ top: 100, behavior: 'smooth' })
-      // chatEl.value.scrollBottom = 0
-    }, 16)
+    chatEl.value.scrollTo({ top: chatEl.value.scrollHeight, behavior: 'smooth' })
   })
 })
 </script>
@@ -59,8 +56,8 @@ watch(chatList, () => {
   <div class="container robot-container">
     <van-nav-bar title="聊天机器人" />
     <!-- 聊天内容 -->
-    <div class="chat-box">
-      <ul ref="chatEl" class="chat-list">
+    <div ref="chatEl" class="chat-box">
+      <ul class="chat-list">
         <li class="chat-item" v-for="(item, index) in chatList" :key="index">
           <ChatRight v-if="item.role === 'user'" :chat="item"></ChatRight>
           <ChatLeft v-else :chat="item"></ChatLeft>

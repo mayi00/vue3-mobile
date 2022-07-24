@@ -3,7 +3,7 @@
  * @Author      : huazf
  * @Date        : 2022-06-30
  * @LastEditors : huazf
- * @LastEditTime: 2022-07-23
+ * @LastEditTime: 2022-07-24
  * @FilePath    : \vue3-demo\src\router\index.js
  */
 import { createRouter, createWebHashHistory } from 'vue-router'
@@ -19,6 +19,12 @@ export const routes = [
     path: '/',
     redirect: 'quickEntry',
     meta: { title: '重定向' }
+  },
+  {
+    path: '/demo',
+    name: 'Demo',
+    component: () => import('@/views/demo/index.vue'),
+    meta: { title: 'DEMO' }
   },
   {
     path: '/home',
