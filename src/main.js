@@ -6,14 +6,9 @@ import '@/assets/css/reset.css' // css样式重置
 import '@/assets/style/index.less' // 引入自定义样式
 // import 'lib-flexible'
 import 'amfe-flexible' // rem 布局适配
-import Vconsole from 'vconsole'
 
 const env = import.meta.env
 console.log('当前环境变量==>', env)
-if (env.VITE_NODE_ENV === 'test') {
-  // 测试环境打开 Vconsole 调试工具
-  new Vconsole()
-}
 
 const app = createApp(App)
 app.use(router)
