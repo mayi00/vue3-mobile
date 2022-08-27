@@ -1,27 +1,27 @@
-# Vue3-demo
+# vue-mobile
 
-> 基于 vue3 + vite 开发的移动端demo
+> 基于 Vue3+Vite+Vant 开发的移动端demo
 
 ## 项目构建
 
 ```bash
 # 安装依赖
-npm install
+yarn
 
 # 启动服务
-npm run dev
+yarn dev
 
 # 测试环境构建
-npm run build:test
+yarn build:test
 
 # 生产环境构建
-npm run build:prod
+yarn build:prod
 
 ```
 
 ## 开发访问
 
 ```bash
-http://localhost:5173
+http://localhost:5188
 
 ```
