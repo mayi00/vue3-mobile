@@ -1,0 +1,18 @@
+/*
+ * @Description  : CSS 变量
+ * @Author       : hzf
+ * @Date         : 2022-08-27
+ * @LastEditors  : hzf
+ * @LastEditTime : 2022-08-27
+ * @FilePath     : \vue-mobile\src\styles\variables.css
+ */
+
+:root {
+  --primary-color: #8df; /* 主题色 */
+  --primary-bg-color: #f3f4f5; /* 主要背景色 */
+  --primary-text-color: #333; /* 主要文字 */
+  --regular-text-color: #666; /* 常规文字 */
+  --secondary-text-color: #999; /* 次要文字 */
+  --primary-shadow: 10px 0 10px -10px rgba(0, 0, 0, 0.12); /* 主要阴影 */
+  --regular-shadow: 0 0 12px rgba(0, 0, 0, 0.12); /* 常规阴影 */
+}

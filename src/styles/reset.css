@@ -1,0 +1,55 @@
+/*
+ * @Description  : CSS重置
+ * @Author       : hzf
+ * @Date         : 2022-08-27
+ * @LastEditors  : hzf
+ * @LastEditTime : 2022-08-27
+ * @FilePath     : \vue-mobile\src\styles\reset.css
+ */
+
+ *, ::before, ::after {
+	margin: 0;
+	padding: 0;
+	border: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 14px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  -webkit-overflow-scrolling: touch;
+}
+
+a, a:hover, a:link, a:visited, a:active {
+  text-decoration: none;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+input, textarea {
+  outline: none;
+  resize: none;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  border: 1px solid transparent;
+  cursor: pointer;
+}

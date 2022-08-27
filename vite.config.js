@@ -1,44 +1,25 @@
 import { defineConfig, loadEnv } from 'vite'
-import vue from '@vitejs/plugin-vue'
 import path from 'path'
-import vueSetupExtend from 'vite-plugin-vue-setup-extend'
-import { viteVConsole } from 'vite-plugin-vconsole'
-import postCssPxToRem from 'postcss-pxtorem'
-import Components from 'unplugin-vue-components/vite'
-import { VantResolver } from 'unplugin-vue-components/resolvers'
+import createVitePlugins from './vite/plugins'
 
-export default ({ mode }) => {
+import postCssPxToRem from 'postcss-pxtorem'
+
+export default ({ mode, command }) => {
   // 获取当前环境变量
   const env = loadEnv(mode, process.cwd())
-  console.log('>>> 当前环境==>', mode)
+  console.log('>>> 当前环境==>', mode, command)
   console.log('>>> 环境变量==>', env)
 
   return defineConfig({
     // 项目根目录
     root: process.cwd(),
     // 公共基础路径
-    base: env.VITE_NODE_ENV === 'development' ? '/' : '/vue3-demo/',
+    base: env.VITE_NODE_ENV === 'development' ? '/' : '/vue-mobile/',
     // 环境配置
     mode,
     // 需要用到的插件
     plugins: [
-      vue(),
-      Components({
-        dirs: ['src/components'], // 默认导入组件文件夹，组件会自动导入
-        resolvers: [VantResolver()], // Vant 组件自动按需引入
-      }),
-      // vite-plugin-vue-setup-extend 插件可以在 script 标签中直接使用 name 属性:<script setup name="Home"></script>
-      vueSetupExtend(),
-      // VConsole 调试工具配置
-      viteVConsole({
-        entry: path.resolve('src/main.js'), // 入口文件，或者这样: [path.resolve('src/main.js')]
-        localEnabled: mode === 'test', // 本地是否启用
-        enabled: mode === 'test', // 是否启用，test 环境启用
-        config: {
-          maxLogNumber: 1000,
-          theme: 'light' // 主题颜色 'dark'|'light'
-        }
-      })
+      ...createVitePlugins(env, command === 'build')
     ],
     // 静态资源服务文件夹
     publicDir: 'public',
@@ -68,10 +49,10 @@ export default ({ mode }) => {
         less: {
           avascriptEnabled: true,
           // 全局引入 less 变量 --方式 1
-          additionalData: `@import "${path.resolve(__dirname, 'src/assets/style/variables.less')}"; `
+          // additionalData: `@import "${path.resolve(__dirname, 'src/styles/variables.less')}"; `
           // 全局引入 less 变量 --方式 2
           // modifyVars: {
-          //   hack: `true; @import (reference) "${path.resolve('src/assets/styles/variables.less')}";`,
+          //   hack: `true; @import (reference) "${path.resolve('src/styles/variables.less')}";`,
           // }
         }
       },
@@ -80,13 +61,10 @@ export default ({ mode }) => {
     },
     // 设为 false 可以避免 Vite 清屏而错过在终端中打印某些关键信息
     clearScreen: false,
+    // 开发服务器
     server: {
       host: '0.0.0.0',
-      // 指定开发服务器端口
-      // port: 5173,
-      // 设为 true 时若端口已被占用则会直接退出，而不是尝试下一个可用端口
-      strictPort: false,
-      // 在开发服务器启动时自动打开
+      port: 5188,
       open: true,
       // 反向代理
       proxy: {

@@ -4,27 +4,27 @@
  * @Date        : 2022-06-30
  * @LastEditors : huazf
  * @LastEditTime: 2022-07-24
- * @FilePath    : \vue3-demo\src\router\index.js
+ * @FilePath    : \vue-mobile\src\router\index.js
  */
 import { createRouter, createWebHashHistory } from 'vue-router'
 
 export const routes = [
   {
-    path: '/quickEntry',
+    path: '/quick-entry',
     name: 'QuickEntry',
-    component: () => import('@/views/quickEntry/index.vue'),
+    component: () => import('@/views/quick-entry/index.vue'),
     meta: { title: '快捷入口列表' }
   },
   {
     path: '/',
-    redirect: 'quickEntry',
+    redirect: 'quick-entry',
     meta: { title: '重定向' }
   },
   {
-    path: '/demo',
-    name: 'Demo',
-    component: () => import('@/views/demo/index.vue'),
-    meta: { title: 'DEMO' }
+    path: '/layout-example',
+    name: 'LayoutExample',
+    component: () => import('@/views/layout-example/index.vue'),
+    meta: { title: '页面布局示例' }
   },
   {
     path: '/home',
@@ -41,7 +41,7 @@ export const routes = [
 ]
 
 const router = createRouter({
-  history: createWebHashHistory(), // 哈希模式(createWebHashHistory) 历史模式(createWebHistory)
+  history: createWebHashHistory(),
   routes,
   // 每次切换路由的时候滚动到页面顶部
   scrollBehavior() {
@@ -54,7 +54,7 @@ router.beforeEach((to, from, next) => {
   if (to.meta.title) {
     document.title = to.meta.title
   } else if (!document.title) {
-    document.title = 'vue3-demo'
+    document.title = 'vue-mobile'
   }
   next()
 })

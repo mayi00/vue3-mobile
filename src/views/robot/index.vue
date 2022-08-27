@@ -1,7 +1,6 @@
 <script setup name="Robot">
-import { ref, reactive, getCurrentInstance, watch, nextTick } from 'vue'
-import ChatRight from './ChatRight.vue'
-import ChatLeft from './ChatLeft.vue'
+import ChatRight from './components/chat-right.vue'
+import ChatLeft from './components/chat-left.vue'
 import { getQingyunke } from '@/api/robot.js'
 
 const { proxy } = getCurrentInstance()
@@ -53,19 +52,18 @@ watch(chatList, () => {
 </script>
 
 <template>
-  <div class="container robot-container">
-    <van-nav-bar title="聊天机器人" />
+  <div class="common-container">
     <!-- 聊天内容 -->
-    <div ref="chatEl" class="chat-box">
+    <div ref="chatEl" class="common-main chat-box">
       <ul class="chat-list">
         <li class="chat-item" v-for="(item, index) in chatList" :key="index">
-          <ChatRight v-if="item.role === 'user'" :chat="item"></ChatRight>
-          <ChatLeft v-else :chat="item"></ChatLeft>
+          <chat-right v-if="item.role === 'user'" :chat="item"></chat-right>
+          <chat-left v-else :chat="item"></chat-left>
         </li>
       </ul>
     </div>
     <!-- 输入区域 -->
-    <div class="input-box">
+    <div class="common-footer input-box">
       <van-field ref="inputRef" v-model.trim="inputValue" rows="1" type="textarea" :autosize="{ maxHeight: 200 }" placeholder="请输入...">
         <template #button>
           <van-button size="small" type="primary" maxlength="100" @click="handleSend">发送</van-button>
@@ -76,12 +74,6 @@ watch(chatList, () => {
 </template>
 
 <style lang="less" scoped>
-.robot-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
 .chat-box {
   flex: 1;
   padding: 0 8px 8px;
@@ -96,6 +88,7 @@ watch(chatList, () => {
 }
 
 .input-box {
+  padding: 0;
   min-height: 60px;
   background-color: #fff;
   border-top: 1px solid #e4e7ed;
