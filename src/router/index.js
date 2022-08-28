@@ -21,22 +21,28 @@ export const routes = [
     meta: { title: '重定向' }
   },
   {
+    path: '/home',
+    name: 'Home',
+    component: () => import('@/views/home/index.vue'),
+    meta: { title: '首页' }
+  },
+  {
     path: '/layout-example',
     name: 'LayoutExample',
     component: () => import('@/views/layout-example/index.vue'),
     meta: { title: '页面布局示例' }
   },
   {
+    path: '/demo',
+    name: 'Demo',
+    component: () => import('@/views/demo/index.vue'),
+    meta: { title: 'Demo' }
+  },
+  {
     path: '/reaction-time',
     name: 'ReactionTime',
     component: () => import('@/views/reaction-time/index.vue'),
     meta: { title: '反应时间测试' }
-  },
-  {
-    path: '/home',
-    name: 'Home',
-    component: () => import('@/views/home/index.vue'),
-    meta: { title: '首页' }
   },
   {
     path: '/robot',

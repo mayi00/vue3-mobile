@@ -26,6 +26,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^3.0.0",
+    "consola": "^2.15.3",
     "less": "^4.1.3",
     "less-loader": "^11.0.0",
     "postcss-pxtorem": "^6.0.0",
@@ -34,6 +35,7 @@
     "unplugin-vue-components": "^0.21.1",
     "vconsole": "^3.14.6",
     "vite": "^3.0.0",
+    "vite-plugin-style-import": "^2.0.0",
     "vite-plugin-vconsole": "^1.2.2",
     "vite-plugin-vue-setup-extend": "^0.4.0"
   }

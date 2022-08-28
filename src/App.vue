@@ -18,6 +18,9 @@ router.afterEach(to => {
     title.value = to.meta.title
   }
 })
+onBeforeUnmount(() => {
+  localStorage.clear()
+})
 </script>
 
 <template>
