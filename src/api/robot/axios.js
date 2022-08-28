@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const env = import.meta.env
-const baseURL = env.VITE_NODE_ENV === 'development' ? '/api' : ''
+const baseURL = env.VITE_NODE_ENV === 'development' ? env.VITE_APP_BASE_API_QINGYUNKE : env.VITE_APP_BASE_URL_QINGYUNKE
 
 const service = axios.create({
   baseURL,

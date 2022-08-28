@@ -2,12 +2,12 @@
  * @Description  : 聊天消息左侧组件
  * @Author       : huazf
  * @Date         : 2022-07-23
- * @LastEditors  : huazf
- * @LastEditTime : 2022-07-23
+ * @LastEditors  : hzf
+ * @LastEditTime : 2022-08-28
  * @FilePath     : \vue-mobile\src\views\robot\components\chat-left.vue
 -->
 <script setup name="ChatLeft">
-const props = defineProps({
+defineProps({
   chat: { type: Object, required: true }
 })
 
@@ -19,9 +19,9 @@ function getImg(name) {
 
 <template>
   <div class="chat-left-container">
-    <van-image class="avatar-box" fit="cover" round :src="getImg('robot.jpg')"></van-image>
+    <van-image class="avatar-box" fit="cover" round :src="getImg('qingyunke.jpg')"></van-image>
     <div class="chat-box">
-      <p class="chat">{{ chat.content }}</p>
+      <p class="chat" v-html="chat.content"></p>
     </div>
   </div>
 </template>
