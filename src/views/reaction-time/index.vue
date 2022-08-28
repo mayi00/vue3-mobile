@@ -15,9 +15,11 @@ const wait = ref(false)
 const end = ref(false)
 const desc = ref('反应时间测试')
 const tip = ref('当背景颜色从红色变成绿色时，请点击。')
+const reactionTime = ref('')
 
 // 点击页面
 function handleReaction () {
+  if (reactionTime.value) return
   if (start.value) {
     desc.value = '请等待...'
     tip.value = ''
@@ -27,12 +29,24 @@ function handleReaction () {
     waitStart()
   } else if (wait.value) {
   } else if (end.value) {
-    const reactionTime = endTiming()
-    desc.value = `${reactionTime} ms`
-    tip.value = '点击再次测试'
+    endTiming()
+    desc.value = `${reactionTime.value} ms`
     start.value = true
     wait.value = false
     end.value = false
+    if (reactionTime.value < 100) {
+      tip.value = '你确定没有作弊吗？'
+    } else if (reactionTime.value < 150) {
+      tip.value = '苏炳添反应时间最快一次为124ms'
+    } else if (reactionTime.value < 200) {
+      tip.value = '博尔特在北京奥运会决赛时的反应时间为165ms'
+    } else if (reactionTime.value < 400) {
+      tip.value = '一般人反应时间在300ms左右'
+    } else if (reactionTime.value < 1000) {
+      tip.value = '这个反应时间有点慢呀'
+    } else {
+      tip.value = '你睡着了吗？'
+    }
   }
 }
 
@@ -56,9 +70,13 @@ function startTiming() {
 }
 // 结束计时
 function endTiming() {
-  const reactionTime = new Date() - startTime.value
+  reactionTime.value = new Date() - startTime.value
   startTime.value = ''
-  return reactionTime
+}
+// 再测一次
+function handleAgain() {
+  reactionTime.value = ''
+  handleReaction()
 }
 </script>
 
@@ -68,6 +86,7 @@ function endTiming() {
       <div class="reaction-time-box" @click="handleReaction">
         <h3 class="desc">{{ desc }}</h3>
         <p class="tip">{{ tip }}</p>
+        <van-button v-if="reactionTime" plain type="primary" @click="handleAgain">再测一次</van-button>
       </div>
     </div>
   </div>
