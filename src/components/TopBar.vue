@@ -3,10 +3,10 @@
  * @Author       : hzf
  * @Date         : 2022-08-27
  * @LastEditors  : hzf
- * @LastEditTime : 2022-08-27
- * @FilePath     : \vue-mobile\src\components\topBar.vue
+ * @LastEditTime : 2022-08-28
+ * @FilePath     : \vue-mobile\src\components\TopBar.vue
 -->
-<script setup name="CommonHeader">
+<script setup name="TopBar">
 defineProps({
   title: { type: String||Number, default: '' },
   leftIcon: { type: Boolean, default: true },

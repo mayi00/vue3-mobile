@@ -86,7 +86,7 @@ function handleAgain() {
       <div class="reaction-time-box" @click="handleReaction">
         <h3 class="desc">{{ desc }}</h3>
         <p class="tip">{{ tip }}</p>
-        <van-button v-if="reactionTime" plain type="primary" @click="handleAgain">再测一次</van-button>
+        <van-button v-show="reactionTime" plain type="primary" @click="handleAgain">再测一次</van-button>
       </div>
     </div>
   </div>

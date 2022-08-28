@@ -25,6 +25,7 @@ function handleRouterPush(path) {
   height: 50px;
   text-align: center;
   line-height: 50px;
+  cursor: pointer;
   &:nth-child(2n) {
     background-color: #f9f9f9;
   }
