@@ -27,6 +27,12 @@ export const routes = [
     meta: { title: '页面布局示例' }
   },
   {
+    path: '/reaction-time',
+    name: 'ReactionTime',
+    component: () => import('@/views/reaction-time/index.vue'),
+    meta: { title: '反应时间测试' }
+  },
+  {
     path: '/home',
     name: 'Home',
     component: () => import('@/views/home/index.vue'),
