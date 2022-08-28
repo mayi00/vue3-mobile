@@ -16,7 +16,7 @@ function handleRouterPush() {
 <template>
   <div class="common-container">
     <div class="common-main">
-      <div class="common-card" v-for="index in 20" :key="index">
+      <div class="common-card card" v-for="index in 20" :key="index">
         卡片{{ index }}
       </div>
     </div>
@@ -27,5 +27,7 @@ function handleRouterPush() {
 </template>
 
 <style lang="less" scoped>
-
+.card {
+  margin-bottom: 10px;
+}
 </style>

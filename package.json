@@ -13,6 +13,7 @@
   "dependencies": {
     "amfe-flexible": "^2.2.1",
     "axios": "^0.27.2",
+    "dayjs": "^1.11.5",
     "lib-flexible": "^0.3.2",
     "normalize.css": "^8.0.1",
     "pinia": "^2.0.21",
