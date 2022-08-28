@@ -1,7 +1,6 @@
 import { defineConfig, loadEnv } from 'vite'
 import path from 'path'
 import createVitePlugins from './vite/plugins'
-
 import postCssPxToRem from 'postcss-pxtorem'
 
 export default ({ mode, command }) => {
@@ -68,16 +67,21 @@ export default ({ mode, command }) => {
       open: true,
       // 反向代理
       proxy: {
-        // 智能聊天机器人代理
-        '/api/qingyunke': {
-          target: env.VITE_APP_BASE_URL_QINGYUNKE,
-          changeOrigin: true,
-          rewrite: path => path.replace(/^\/api\/qingyunke/, '')
-        },
-        '/api': {
+        // '/api': {
+        //   target: env.VITE_APP_BASE_URL,
+        //   changeOrigin: true,
+        //   rewrite: path => path.replace(/^\/api/, '')
+        // },
+        [env.VITE_APP_BASE_API]: {
           target: env.VITE_APP_BASE_URL,
           changeOrigin: true,
-          rewrite: path => path.replace(/^\/api/, '')
+          rewrite: path => path.replace(new RegExp(`^${env.VITE_APP_BASE_API}`), '')
+        },
+        // 青云客聊天机器人接口
+        [env.VITE_APP_BASE_API_QINGYUNKE]: {
+          target: env.VITE_APP_BASE_URL_QINGYUNKE,
+          changeOrigin: true,
+          rewrite: path => path.replace(new RegExp(`^${env.VITE_APP_BASE_API_QINGYUNKE}`), '')
         }
       }
     },

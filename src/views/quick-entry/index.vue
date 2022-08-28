@@ -11,14 +11,14 @@ function handleRouterPush(path) {
 
 <template>
   <div class="common-container">
-    <ul class="common-main route-box">
+    <ul class="common-wrapper route-wrapper">
       <li class="route-item" v-for="(item, index) in routes" :key="index" @click="handleRouterPush(item.path)">{{ item.meta.title }}</li>
     </ul>
   </div>
 </template>
 
 <style lang="less" scoped>
-.route-box {
+.route-wrapper {
   padding: 0;
 }
 .route-item {

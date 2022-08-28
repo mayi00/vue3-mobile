@@ -1,20 +1,13 @@
 <!--
- * @Description  : 
- * @Author       : hzf
- * @Date         : 2022-08-27
- * @LastEditors  : hzf
- * @LastEditTime : 2022-08-27
--->
-<!--
  * @Description   : 聊天消息右侧组件
  * @Author        : huazf
  * @Date          : 2022-07-23
- * @LastEditors   : huazf
- * @LastEditTime  : 2022-07-23
+ * @LastEditors  : hzf
+ * @LastEditTime : 2022-08-28
  * @FilePath     : \vue-mobile\src\views\robot\components\chat-right.vue
 -->
 <script setup name="ChatRight">
-const props = defineProps({
+defineProps({
   chat: { type: Object, required: true }
 })
 

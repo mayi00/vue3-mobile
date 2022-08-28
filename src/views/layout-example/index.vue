@@ -15,7 +15,7 @@ function handleRouterPush() {
 
 <template>
   <div class="common-container">
-    <div class="common-main">
+    <div class="common-wrapper">
       <div class="common-card card" v-for="index in 20" :key="index">
         卡片{{ index }}
       </div>
