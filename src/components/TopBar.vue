@@ -3,7 +3,7 @@
  * @Author       : hzf
  * @Date         : 2022-08-27
  * @LastEditors  : hzf
- * @LastEditTime : 2022-08-28
+ * @LastEditTime : 2022-09-08
  * @FilePath     : \vue-mobile\src\components\TopBar.vue
 -->
 <script setup name="TopBar">
@@ -13,19 +13,20 @@ defineProps({
   rightIcon: { type: Boolean, default: false }
 })
 
-const router = useRouter()
-
-function onClickLeft () {
-  router.go(-1)
+const emit = defineEmits(['on-click-left', 'on-click-right'])
+// 点击左侧按钮
+function clickLeft () {
+  emit('on-click-left')
 }
-function onClickRight () {
-  console.log('TopBar点击右侧区域')
+// 点击右侧按钮
+function clickRight () {
+  emit('on-click-right')
 }
 </script>
 
 <template>
   <header class="container">
-    <van-nav-bar :title="title" @click-left="onClickLeft" @click-right="onClickRight">
+    <van-nav-bar :title="title" @click-left="clickLeft" @click-right="clickRight">
       <template #left v-if="leftIcon">
         <van-icon name="arrow-left" size="16px" color="var(--primary-text-color)"></van-icon>
       </template>

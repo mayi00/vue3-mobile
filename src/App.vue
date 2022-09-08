@@ -1,30 +1,23 @@
 <script setup>
 import useSettingsStore from '@/store/modules/settings.js'
 
-const title = ref('')
-const showTopBar = computed(() => {
-  return useSettingsStore().showTopBar
-})
-const showTopBarLeft = computed(() => {
-  return useSettingsStore().showTopBarLeft
-})
-const showTopBarRight = computed(() => {
-  return useSettingsStore().showTopBarRight
-})
-
+const settingsStore = useSettingsStore()
+const { showTopBar, showTopBarLeftIcon, showTopBarRightIcon} = storeToRefs(settingsStore)
+const title = ref('') // 顶栏标题
 const router = useRouter()
 router.afterEach(to => {
   if (to.meta.title) {
     title.value = to.meta.title
   }
 })
-onBeforeUnmount(() => {
-  localStorage.clear()
-})
+// 点击顶栏左侧按钮
+function onClickLeft() {
+  router.go(-1)
+}
 </script>
 
 <template>
-  <top-bar v-show="showTopBar" :title="title" :left-icon="showTopBarLeft" :right-icon="showTopBarRight"></top-bar>
+  <top-bar v-show="showTopBar" :title="title" :left-icon="showTopBarLeftIcon" :right-icon="showTopBarRightIcon" @on-click-left="onClickLeft"></top-bar>
   <main class="app-main">
     <router-view />
   </main>

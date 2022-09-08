@@ -1,28 +1,28 @@
 import { defineStore } from 'pinia'
 
 const useSettingsStore = defineStore('settings', {
-  persist: true,
-  // persist: {
-  //   key: 'settings',
-  //   storage: window.sessionStorage
-  // },
+  // persist: true,
+  persist: {
+    key: 'settings',
+    storage: window.sessionStorage
+  },
   state: () => {
     return {
       // 头部标题栏
       showTopBar: true,
-      showTopBarLeft: true,
-      showTopBarRight: false,
+      showTopBarLeftIcon: true,
+      showTopBarRightIcon: false,
     }
   },
   actions: {
     updateTopBar (val) {
       this.showTopBar = val
     },
-    updateTopBarLeft (val) {
-      this.showTopBarLeft = val
+    updateTopBarLeftIcon (val) {
+      this.showTopBarLeftIcon = val
     },
-    updateTopBarRight (val) {
-      this.showTopBarRight = val
+    updateTopBarRightIcon (val) {
+      this.showTopBarRightIcon = val
     }
   }
 })

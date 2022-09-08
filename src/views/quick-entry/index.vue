@@ -4,7 +4,7 @@ import { routes } from '@/router'
 const router = useRouter()
 
 // 跳转路由
-function handleRouterPush(path) {
+function handleRouterJump(path) {
   router.push({ path })
 }
 </script>
@@ -12,7 +12,7 @@ function handleRouterPush(path) {
 <template>
   <div class="common-container">
     <ul class="common-wrapper route-wrapper">
-      <li class="route-item" v-for="(item, index) in routes" :key="index" @click="handleRouterPush(item.path)">{{ item.meta.title }}</li>
+      <li v-for="item in routes" :key="item.path" class="route-item" @click="handleRouterJump(item.path)">{{ item.meta.title }}</li>
     </ul>
   </div>
 </template>

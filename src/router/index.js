@@ -21,16 +21,16 @@ export const routes = [
     meta: { title: '重定向' }
   },
   {
-    path: '/home',
-    name: 'Home',
-    component: () => import('@/views/home/index.vue'),
-    meta: { title: '首页' }
-  },
-  {
     path: '/layout-example',
     name: 'LayoutExample',
     component: () => import('@/views/layout-example/index.vue'),
     meta: { title: '页面布局示例' }
+  },
+  {
+    path: '/home',
+    name: 'Home',
+    component: () => import('@/views/home/index.vue'),
+    meta: { title: '首页' }
   },
   {
     path: '/demo',
@@ -49,13 +49,19 @@ export const routes = [
     name: 'Robot',
     component: () => import('@/views/robot/index.vue'),
     meta: { title: '聊天机器人' }
+  },
+  {
+    path: '/sign',
+    name: 'Robot',
+    component: () => import('@/views/sign/index.vue'),
+    meta: { title: '电子签名' }
   }
 ]
 
 const router = createRouter({
   history: createWebHashHistory(),
   routes,
-  // 每次切换路由的时候滚动到页面顶部
+  // 切换路由时自动滚动到页面顶部
   scrollBehavior() {
     return { left: 0, top: 0 }
   }
