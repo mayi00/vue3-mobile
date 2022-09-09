@@ -56,7 +56,7 @@ const timer = ref(null)
 // 等待
 function waitStart () {
   clearTimeout(timer)
-  const waitTime = getRandom(1000, 5000)
+  const waitTime = getRandom(1000, 6000)
   timer.value = setTimeout(() => {
     start.value = false
     wait.value = false
@@ -84,13 +84,13 @@ function handleAgain() {
 
 <template>
   <div class="common-container">
-    <div class="common-wrapper reaction-time-wrapper" :class="{ start: start, wait: wait, end: end}">
+    <main class="common-main reaction-time-wrapper" :class="{ start: start, wait: wait, end: end}">
       <div class="reaction-time-box" @click="handleReaction">
         <h3 class="desc">{{ desc }}</h3>
         <p class="tip">{{ tip }}</p>
         <van-button v-show="reactionTime" plain type="primary" @click="handleAgain">再测一次</van-button>
       </div>
-    </div>
+    </main>
   </div>
 </template>
 
@@ -109,11 +109,11 @@ function handleAgain() {
   height: 100%;
   .desc {
     font-size: 28px;
-    line-height: 50px;
+    line-height: 48px;
   }
   .tip {
     font-size: 16px;
-    line-height: 36px;
+    line-height: 40px;
   }
 }
 

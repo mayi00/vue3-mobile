@@ -67,14 +67,14 @@ function getAnswer(val) {
 <template>
   <div class="common-container">
     <!-- 聊天内容 -->
-    <div ref="chatEl" class="common-wrapper chat-wrapper">
+    <main ref="chatEl" class="common-main chat-wrapper">
       <ul class="chat-list">
         <li class="chat-item" v-for="(item, index) in chatList" :key="index">
           <chat-right v-if="item.role === 'user'" :chat="item"></chat-right>
           <chat-left v-else :chat="item"></chat-left>
         </li>
       </ul>
-    </div>
+    </main>
     <!-- 输入区域 -->
     <div class="common-footer input-wrapper">
       <textarea ref="inputEl" v-model.trim="inputValue" class="textarea" placeholder="请输入..." maxlength="100" @keydown.enter="handleKeydownEnter" @blur="handleBlur"></textarea>
@@ -85,7 +85,7 @@ function getAnswer(val) {
 
 <style lang="less" scoped>
 .chat-wrapper {
-  padding: 0 8px;
+  padding: 0 8px 56px;
   .chat-list {
     min-height: 100%;
     .chat-item {
@@ -95,7 +95,7 @@ function getAnswer(val) {
 }
 
 .input-wrapper {
-  min-height: 60px;
+  min-height: 56px;
   max-height: 100px;
   background-color: var(--primary-bg-color);
 
@@ -112,7 +112,7 @@ function getAnswer(val) {
   }
   .send-btn {
     margin-left: 8px;
-    width: 50px;
+    width: 48px;
   }
 }
 </style>
