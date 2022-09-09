@@ -23,6 +23,12 @@ export default ({ mode, command }) => {
     // 静态资源服务文件夹
     publicDir: 'public',
     resolve: {
+      /**
+       * 解决打包时的低版本 vue 引入报错
+       * error during build:
+       * Error: 'openBlock' is not exported by node_modules/vue-esign/node_modules/vue/dist/vue.runtime.esm.js
+       */
+      dedupe: ['vue'],
       // 配置路径别名
       alias: {
         "@": path.join(__dirname, "./src")
@@ -111,7 +117,7 @@ export default ({ mode, command }) => {
         }
       },
       // 启用/禁用 gzip 压缩大小报告
-      reportCompressedSize: true,
+      reportCompressedSize: false,
       // chunk 大小警告的限制（以 kbs 为单位）
       chunkSizeWarningLimit: 500
     }

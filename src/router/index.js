@@ -52,7 +52,7 @@ export const routes = [
   },
   {
     path: '/sign',
-    name: 'Robot',
+    name: 'Sign',
     component: () => import('@/views/sign/index.vue'),
     meta: { title: '电子签名' }
   }
