@@ -3,7 +3,7 @@
  * @Author       : hzf
  * @Date         : 2022-08-28
  * @LastEditors  : hzf
- * @LastEditTime : 2022-08-28
+ * @LastEditTime : 2022-09-09
  * @FilePath     : \vue-mobile\src\views\reaction-time\index.vue
 -->
 
@@ -37,13 +37,15 @@ function handleReaction () {
     if (reactionTime.value < 100) {
       tip.value = '你确定没有作弊吗？'
     } else if (reactionTime.value < 150) {
-      tip.value = '苏炳添在比赛时反应时间最快的一次为124ms'
+      tip.value = '苏炳添在比赛时反应时间最短的一次为124ms'
     } else if (reactionTime.value < 200) {
       tip.value = '博尔特在北京奥运会决赛时的反应时间为165ms'
     } else if (reactionTime.value < 500) {
       tip.value = '一般人反应时间在300ms左右'
     } else if (reactionTime.value < 1000) {
       tip.value = '这个反应时间有点慢呀'
+    } else if (reactionTime.value < 2000) {
+      tip.value = '你是不是喝多了啊？'
     } else {
       tip.value = '你睡着了吗？'
     }
