@@ -22,9 +22,9 @@ function handleRouterJump(path) {
   padding: 0;
 }
 .route-item {
-  height: 50px;
+  height: 48px;
   text-align: center;
-  line-height: 50px;
+  line-height: 48px;
   cursor: pointer;
   &:nth-child(2n) {
     background-color: #f9f9f9;
