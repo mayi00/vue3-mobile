@@ -21,6 +21,7 @@ function handleRandomStr() {
   const lower = randomStr.type.includes('lower')
   const num = randomStr.type.includes('num')
   const str = tools.getRandomString(randomStr.length, upper, lower, num)
+  console.log(str)
   if (str) {
     randomStr.str = str
   } else {
