@@ -1,27 +1,27 @@
-# vue-mobile
+# h5-vite5
 
-> 基于 Vue3+Vite+Vant 开发的移动端demo
+> 基于 Vue3.4 + Vite5 + Vant4 开发的移动端demo
 
 ## 项目构建
 
 ```bash
 # 安装依赖
-yarn
+pnpm install
 
 # 启动服务
-yarn dev
+pnpm run dev
 
 # 测试环境构建
-yarn build:test
+pnpm run build:test
 
 # 生产环境构建
-yarn build:prod
+pnpm run build:prod
 
 ```
 
 ## 开发访问
 
 ```bash
-http://localhost:5188
+http://localhost:8000
 
 ```

@@ -1,0 +1,8 @@
+dist
+node_modules
+pbulic
+package.json
+*.html
+.vscode
+.idea
+.DS_Store

@@ -1,10 +1,10 @@
 /*
- * @Description  : 工具函数
+ * @Description  : 一些通用的工具函数
  * @Author       : hzf
- * @Date         : 2022-08-28
+ * @Date         : 2024-01-13
  * @LastEditors  : hzf
- * @LastEditTime : 2022-09-08
- * @FilePath     : \vue-mobile\src\utils\utils.js
+ * @LastEditTime : 2024-01-14
+ * @FilePath     : \h5-vite5\src\utils\utils.js
  */
 
 /**
@@ -15,9 +15,43 @@
  * @Author       : hzf
  */
 export function getRandom(min, max) {
-  min = Number(min)
-  max = Number(max)
-  return Math.floor(Math.random() * (max - min + 1)) + min
+  const minNo = Number(min)
+  const maxNo = Number(max)
+  return Math.floor(Math.random() * (maxNo - minNo + 1)) + minNo
+}
+
+/**
+ * @description : 获取随机字符串，传入的 length 为空时，则返回 ''，若 hasUppercase , hasLowercase, hasNum 均不传，则默认全部包含
+ * @param         {Number|String} length 字符串长度，如不传则默认生成32位
+ * @param         {Boolean} hasUppercase  是否包含大写字母
+ * @param         {Boolean} hasLowercase 是否包含小写字母
+ * @param         {Boolean} hasNum 是否包含数字
+ * @return        {Boolean|String} 生成的字符串
+ * @Author       : hzf
+ */
+export function getRandomString(length = 32, hasUppercase = true, hasLowercase = true, hasNum = true) {
+  const lengthNo = Number(length)
+  let str = ''
+  if (!lengthNo || lengthNo < 1) {
+    str = ''
+  } else {
+    const upperChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    const lowerChars = 'abcdefghijklmnopqrstuvwxyz'
+    const numChars = '0123456789'
+    let chars = ''
+    if (!hasUppercase && !hasLowercase && !hasNum) {
+      chars = `${upperChars}${lowerChars}${numChars}`
+    } else {
+      if (hasUppercase) chars += upperChars
+      if (hasLowercase) chars += lowerChars
+      if (hasNum) chars += numChars
+    }
+    const maxLength = chars.length
+    for (let i = 0; i < lengthNo; i++) {
+      str = str + chars.charAt(Math.floor(Math.random() * maxLength))
+    }
+  }
+  return str
 }
 
 /**
@@ -38,10 +72,12 @@ export function isExternalLink(path) {
  */
 export function downloadImageByBase64(content, fileName) {
   const aLink = document.createElement('a')
-  const blob = base64ToBlob(content) // new Blob([content])
+  // new Blob([content])
+  const blob = base64ToBlob(content)
   const evt = document.createEvent('HTMLEvents')
-  evt.initEvent('click', true, true)// initEvent 不加后两个参数在FF下会报错  事件类型，是否冒泡，是否阻止浏览器的默认行为
+  // initEvent 不加后两个参数在FF下会报错  事件类型，是否冒泡，是否阻止浏览器的默认行为
   aLink.download = fileName
+  evt.initEvent('click', true, true)
   aLink.href = URL.createObjectURL(blob)
   aLink.click()
 }
@@ -49,15 +85,19 @@ export function downloadImageByBase64(content, fileName) {
 /**
  * @description  : base64 字符串转 Blob 对象
  * @param         {String} content base64 格式文件
- * @return        {} Blob 对象
+ * @return        {Blob} Blob 对象
  * @Author       : hzf
  */
 export function base64ToBlob(content) {
   const parts = content.split(';base64,')
-  const contentType = parts[0].split(':')[1] // 解析出 mime 类型
-  const byteString = window.atob(parts[1]) // base64 解码得到二进制字符串
-  const arrayBuffer = new ArrayBuffer(byteString.length) // 创建缓冲数组
-  const uint8Array = new Uint8Array(arrayBuffer) // 创建8位无符号整数值的类型化数组
+  // 解析出 mime 类型
+  const contentType = parts[0].split(':')[1]
+  // base64 解码得到二进制字符串
+  const byteString = window.atob(parts[1])
+  // 创建缓冲数组
+  const arrayBuffer = new ArrayBuffer(byteString.length)
+  // 创建8位无符号整数值的类型化数组
+  const uint8Array = new Uint8Array(arrayBuffer)
   for (let i = 0; i < byteString.length; i++) {
     uint8Array[i] = byteString.charCodeAt(i)
   }
