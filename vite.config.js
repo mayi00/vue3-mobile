@@ -9,7 +9,7 @@ export default ({ mode, command }) => {
   console.info('>>> 当前环境：', mode)
 
   return defineConfig({
-    base: './',
+    base: '/h5-vue3/',
     define: {
       'process.env': env
     },

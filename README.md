@@ -22,6 +22,6 @@ pnpm run build:prod
 ## 开发访问
 
 ```bash
-http://localhost:8000
+http://localhost:8000/h5-vue3
 
 ```
