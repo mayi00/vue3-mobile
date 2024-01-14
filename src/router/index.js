@@ -1,62 +1,6 @@
-/*
- * @Description : 路由
- * @Author      : huazf
- * @Date        : 2022-06-30
- * @LastEditors : huazf
- * @LastEditTime: 2022-07-24
- * @FilePath    : \vue-mobile\src\router\index.js
- */
 import { createRouter, createWebHashHistory } from 'vue-router'
-
-export const routes = [
-  {
-    path: '/quick-entry',
-    name: 'QuickEntry',
-    component: () => import('@/views/quick-entry/index.vue'),
-    meta: { title: '快捷入口列表' }
-  },
-  {
-    path: '/',
-    redirect: 'quick-entry',
-    meta: { title: '重定向' }
-  },
-  {
-    path: '/layout-example',
-    name: 'LayoutExample',
-    component: () => import('@/views/layout-example/index.vue'),
-    meta: { title: '页面布局示例' }
-  },
-  {
-    path: '/home',
-    name: 'Home',
-    component: () => import('@/views/home/index.vue'),
-    meta: { title: '首页' }
-  },
-  {
-    path: '/demo',
-    name: 'Demo',
-    component: () => import('@/views/demo/index.vue'),
-    meta: { title: 'Demo' }
-  },
-  {
-    path: '/reaction-time',
-    name: 'ReactionTime',
-    component: () => import('@/views/reaction-time/index.vue'),
-    meta: { title: '反应时间测试' }
-  },
-  {
-    path: '/robot',
-    name: 'Robot',
-    component: () => import('@/views/robot/index.vue'),
-    meta: { title: '聊天机器人' }
-  },
-  {
-    path: '/sign',
-    name: 'Sign',
-    component: () => import('@/views/sign/index.vue'),
-    meta: { title: '电子签名' }
-  }
-]
+import { routes } from './routes'
+import useAppStore from '@/store/modules/app.js'
 
 const router = createRouter({
   history: createWebHashHistory(),
@@ -67,14 +11,23 @@ const router = createRouter({
   }
 })
 
-router.beforeEach((to, from, next) => {
-  // 路由发生变化修改页面 title
-  if (to.meta.title) {
-    document.title = to.meta.title
-  } else if (!document.title) {
-    document.title = 'vue-mobile'
+router.afterEach(to => {
+  if (to.meta) {
+    // 路由跳转后修改页面 title
+    document.title = to.meta.title || document.title
+    // 设置顶部导航栏的显示/隐藏
+    useAppStore().setTopNavBar(to.meta.showTopNavBar || false)
+    if (to.meta.showTopNavBar) {
+      // 设置顶部导航栏左侧图标的显示/隐藏
+      if (typeof to.meta.showTopNavBarLeftIcon === 'undefined') {
+        useAppStore().setTopNavBarLeftIcon(true)
+      } else {
+        useAppStore().setTopNavBarLeftIcon(to.meta.showTopNavBarLeftIcon)
+      }
+      // 设置顶部导航栏右侧图标的显示/隐藏
+      useAppStore().setTopNavBarRightIcon(to.meta.showTopNavBarRightIcon || false)
+    }
   }
-  next()
 })
 
 export default router

@@ -1,5 +1,5 @@
 <script setup name="QuickEntry">
-import { routes } from '@/router'
+import { routes } from '@/router/routes.js'
 
 const router = useRouter()
 
@@ -10,27 +10,39 @@ function handleRouterJump(path) {
 </script>
 
 <template>
-  <div class="common-container">
-    <ul class="common-wrapper route-wrapper">
-      <li v-for="item in routes" :key="item.path" class="route-item" @click="handleRouterJump(item.path)">{{ item.meta.title }}</li>
+  <div class="entry-container">
+    <ul class="route-wrapper">
+      <template v-for="item in routes" :key="item.path">
+        <li v-if="item.meta && item.meta.title" class="route-item" @click="handleRouterJump(item.path)">
+          {{ item.meta.title }}
+        </li>
+      </template>
     </ul>
   </div>
 </template>
 
 <style lang="less" scoped>
+.entry-container {
+  height: 100%;
+  background-color: #fff;
+  overflow-y: auto;
+}
+
 .route-wrapper {
   padding: 0;
 }
+
 .route-item {
   height: 48px;
   text-align: center;
   line-height: 48px;
-  cursor: pointer;
+
   &:nth-child(2n) {
-    background-color: #f9f9f9;
+    background-color: #efefef;
   }
+
   &:nth-child(2n + 1) {
-    background-color: #e3e3e3;
+    background-color: #f9f9f9;
   }
 }
 </style>

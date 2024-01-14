@@ -1,40 +1,26 @@
 import { defineConfig, loadEnv } from 'vite'
-import path from 'path'
-import createVitePlugins from './vite/plugins'
+import createVitePlugins from './vite'
+import * as path from 'path'
 import postCssPxToRem from 'postcss-pxtorem'
 
 export default ({ mode, command }) => {
-  // 获取当前环境变量
   const env = loadEnv(mode, process.cwd())
-  console.log('>>> 当前环境==>', mode, command)
-  console.log('>>> 环境变量==>', env)
+  console.info('>>> 当前构建模式：', command)
+  console.info('>>> 当前环境：', mode)
 
   return defineConfig({
-    // 项目根目录
-    root: process.cwd(),
-    // 公共基础路径
-    base: env.VITE_NODE_ENV === 'development' ? '/' : '/vue-mobile/',
-    // 环境配置
-    mode,
-    // 需要用到的插件
-    plugins: [
-      ...createVitePlugins(env, command === 'build')
-    ],
+    base: './',
+    define: {
+      'process.env': env
+    },
+    plugins: [...createVitePlugins(env)],
     // 静态资源服务文件夹
     publicDir: 'public',
     resolve: {
-      /**
-       * 解决打包时的低版本 vue 引入报错
-       * error during build:
-       * Error: 'openBlock' is not exported by node_modules/vue-esign/node_modules/vue/dist/vue.runtime.esm.js
-       */
-      dedupe: ['vue'],
       // 配置路径别名
       alias: {
-        "@": path.join(__dirname, "./src")
-      },
-      // 导入时想要省略的扩展名列表
-      extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json']
+        '@': path.join(__dirname, './src')
+      }
     },
     css: {
       // 配置 CSS modules 的行为。选项将被传递给 postcss-modules
@@ -43,51 +29,34 @@ export default ({ mode, command }) => {
       postcss: {
         plugins: [
           postCssPxToRem({
-            rootValue: 37.5, // 1rem 的大小
-            propList: ['*'], // 需要转换的属性，*全部转换
-            unitPrecision: 6 // 转换精度，保留的小数位数
+            // 1rem 的大小
+            rootValue: 37.5,
+            // 需要转换的属性，*全部转换
+            propList: ['*'],
+            // 转换精度，保留的小数位数
+            unitPrecision: 6
           })
         ]
-      },
-      // 指定传递给 CSS 预处理器的选项，文件扩展名用作选项的键
-      preprocessorOptions: {
-        less: {
-          avascriptEnabled: true,
-          // 全局引入 less 变量 --方式 1
-          // additionalData: `@import "${path.resolve(__dirname, 'src/styles/variables.less')}"; `
-          // 全局引入 less 变量 --方式 2
-          // modifyVars: {
-          //   hack: `true; @import (reference) "${path.resolve('src/styles/variables.less')}";`,
-          // }
-        }
       },
       // 在开发过程中是否启用 sourcemap
       devSourcemap: true
     },
-    // 设为 false 可以避免 Vite 清屏而错过在终端中打印某些关键信息
     clearScreen: false,
-    // 开发服务器
     server: {
       host: '0.0.0.0',
-      port: 5188,
+      port: 8000,
       open: true,
       // 反向代理
       proxy: {
-        // '/api': {
-        //   target: env.VITE_APP_BASE_URL,
-        //   changeOrigin: true,
-        //   rewrite: path => path.replace(/^\/api/, '')
-        // },
-        [env.VITE_APP_BASE_API]: {
-          target: env.VITE_APP_BASE_URL,
-          changeOrigin: true,
-          rewrite: path => path.replace(new RegExp(`^${env.VITE_APP_BASE_API}`), '')
-        },
-        // 青云客聊天机器人接口
         [env.VITE_APP_BASE_API_QINGYUNKE]: {
           target: env.VITE_APP_BASE_URL_QINGYUNKE,
           changeOrigin: true,
           rewrite: path => path.replace(new RegExp(`^${env.VITE_APP_BASE_API_QINGYUNKE}`), '')
+        },
+        [env.VITE_APP_BASE_PROXY]: {
+          target: env.VITE_APP_BASE_URL,
+          changeOrigin: true,
+          rewrite: path => path.replace(new RegExp(`^${env.VITE_APP_BASE_PROXY}`), '')
         }
       }
     },
@@ -112,8 +81,10 @@ export default ({ mode, command }) => {
       terserOptions: {
         // 生产环境打包移除 console debugger
         compress: {
+          /* eslint-disable */
           drop_console: env.VITE_NODE_ENV === 'production',
           drop_debugger: env.VITE_NODE_ENV === 'production'
+          /* eslint-enable */
         }
       },
       // 启用/禁用 gzip 压缩大小报告

@@ -3,34 +3,38 @@
  * @Author       : hzf
  * @Date         : 2022-08-28
  * @LastEditors  : hzf
- * @LastEditTime : 2022-09-09
- * @FilePath     : \vue-mobile\src\views\reaction-time\index.vue
+ * @LastEditTime : 2024-01-14
+ * @FilePath     : \h5-vite5\src\views\reaction-time\index.vue
 -->
-
 <script setup name="ReactionTime">
 import { getRandom } from '@/utils/utils.js'
 
 const start = ref(true)
 const wait = ref(false)
 const end = ref(false)
-const desc = ref('反应时间测试')
+const title = ref('反应时间测试')
 const tip = ref('当背景颜色从红色变成绿色时，请点击。')
 const reactionTime = ref('')
+const startTime = ref('')
+let timer
+
+onBeforeUnmount(() => {
+  clearTimeout(timer)
+})
 
 // 点击页面
-function handleReaction () {
+function handleReaction() {
   if (reactionTime.value) return
   if (start.value) {
-    desc.value = '请等待...'
+    title.value = '请等待...'
     tip.value = ''
     start.value = false
     wait.value = true
     end.value = false
     waitStart()
-  } else if (wait.value) {
   } else if (end.value) {
     endTiming()
-    desc.value = `${reactionTime.value} ms`
+    title.value = `${reactionTime.value} ms`
     start.value = true
     wait.value = false
     end.value = false
@@ -51,21 +55,18 @@ function handleReaction () {
     }
   }
 }
-
-const timer = ref(null)
 // 等待
-function waitStart () {
+function waitStart() {
   clearTimeout(timer)
   const waitTime = getRandom(1000, 6000)
-  timer.value = setTimeout(() => {
+  timer = setTimeout(() => {
     start.value = false
     wait.value = false
     end.value = true
-    desc.value = '请点击！'
+    title.value = '请点击！'
     startTiming()
   }, waitTime)
 }
-const startTime = ref('')
 // 开始计时
 function startTiming() {
   startTime.value = new Date()
@@ -83,19 +84,19 @@ function handleAgain() {
 </script>
 
 <template>
-  <div class="common-container">
-    <main class="common-main reaction-time-wrapper" :class="{ start: start, wait: wait, end: end}">
-      <div class="reaction-time-box" @click="handleReaction">
-        <h3 class="desc">{{ desc }}</h3>
-        <p class="tip">{{ tip }}</p>
-        <van-button v-show="reactionTime" plain type="primary" @click="handleAgain">再测一次</van-button>
-      </div>
-    </main>
-  </div>
+  <main class="reaction-time-main" :class="{ start: start, wait: wait, end: end }">
+    <div class="reaction-time-box" @click="handleReaction">
+      <h3 class="title">{{ title }}</h3>
+      <p class="tip">{{ tip }}</p>
+      <van-button v-show="reactionTime" plain type="primary" @click="handleAgain">再测一次</van-button>
+    </div>
+  </main>
 </template>
 
 <style lang="less" scoped>
-.reaction-time-wrapper {
+.reaction-time-main {
+  width: 100%;
+  height: 100%;
   color: #fff;
   cursor: pointer;
 }
@@ -107,10 +108,12 @@ function handleAgain() {
   align-items: center;
   width: 100%;
   height: 100%;
-  .desc {
+
+  .title {
     font-size: 28px;
     line-height: 48px;
   }
+
   .tip {
     font-size: 16px;
     line-height: 40px;

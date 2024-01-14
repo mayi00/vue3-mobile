@@ -7,7 +7,6 @@
  * @LastEditTime : 2022-08-27
  * @FilePath     : \vue-mobile\vite\plugins\setup-extend.js
  */
-
 import vueSetupExtend from 'vite-plugin-vue-setup-extend'
 
 export default function createSetupExtend() {

@@ -1,52 +1,50 @@
 <script setup>
-import useSettingsStore from '@/store/modules/settings.js'
+import useAppStore from '@/store/modules/app.js'
 
-const settingsStore = useSettingsStore()
-const { showTopBar, showTopBarLeftIcon, showTopBarRightIcon} = storeToRefs(settingsStore)
-const title = ref('') // 顶栏标题
+const { showTopNavBar, topNavBarTitle, showTopNavBarLeftIcon, showTopNavBarRightIcon } = storeToRefs(useAppStore())
 const router = useRouter()
-router.afterEach(to => {
-  if (to.meta.title) {
-    title.value = to.meta.title
-  }
-})
-// 点击顶栏左侧按钮
-function onClickLeft() {
+
+// 点击左侧按钮
+function handleClickLeft() {
   router.go(-1)
 }
+// 点击右侧按钮
+function handleClickRight() {
+  console.log('点击右侧按钮')
+}
+
+router.afterEach(to => {
+  topNavBarTitle.value = to.meta?.title
+})
 </script>
 
 <template>
-  <top-bar v-show="showTopBar" :title="title" :left-icon="showTopBarLeftIcon" :right-icon="showTopBarRightIcon" @on-click-left="onClickLeft"></top-bar>
-  <main class="app-main">
-    <router-view />
-  </main>
+  <div class="app-container">
+    <TopNavBar v-if="showTopNavBar" :title="topNavBarTitle" :show-left-icon="showTopNavBarLeftIcon"
+      :show-right-icon="showTopNavBarRightIcon" @on-click-left="handleClickLeft" @on-click-right="handleClickRight">
+    </TopNavBar>
+    <main class="app-main" :class="showTopNavBar ? 'has-navbar' : 'no-navbar'">
+      <router-view />
+    </main>
+  </div>
 </template>
 
-<style lang="less">
-// 纵向
-@media screen and (orientation: portrait) {
-  #app {
-    height: 100vh;
-  }
-}
-
-// 横向
-@media screen and (orientation: landscape) {
-  #app {
-    height: 100%;
-  }
-}
-
-#app {
-  display: flex;
-  flex-direction: column;
-  font-size: 14px;
-  color: var(--primary-text-color);
+<style lang="less" scoped>
+.app-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
 .app-main {
-  flex: 1;
   overflow-y: auto;
+
+  &.has-navbar {
+    height: calc(100% - 46px);
+  }
+
+  &.no-navbar {
+    height: 100%;
+  }
 }
 </style>

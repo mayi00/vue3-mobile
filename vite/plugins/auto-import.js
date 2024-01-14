@@ -6,7 +6,6 @@
  * @LastEditTime : 2022-08-27
  * @FilePath     : \vue-mobile\vite\plugins\auto-import.js
  */
-
 import autoImport from 'unplugin-auto-import/vite'
 
 export default function createAutoImport() {
@@ -15,12 +14,7 @@ export default function createAutoImport() {
       'vue',
       'vue-router',
       {
-        'vue': [
-          'defineProps',
-          'defineEmits',
-          'defineExpose',
-          'withDefaults'
-        ]
+        vue: ['defineProps', 'defineEmits', 'defineExpose', 'withDefaults']
       },
       'pinia'
     ],

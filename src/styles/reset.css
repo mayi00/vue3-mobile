@@ -1,56 +1,88 @@
-/*
- * @Description  : CSS重置
- * @Author       : hzf
- * @Date         : 2022-08-27
- * @LastEditors  : hzf
- * @LastEditTime : 2022-08-28
- * @FilePath     : \vue-mobile\src\styles\reset.css
- */
-
- *, ::before, ::after {
-	margin: 0;
-	padding: 0;
-	border: 0;
-  box-sizing: border-box;
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
   word-break: break-all;
+  box-sizing: border-box;
 }
 
-html, body {
-  height: 100%;
-  font-family: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
-  font-size: 14px;
+html,
+body {
+  line-height: 1;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
   -webkit-overflow-scrolling: touch;
 }
 
-a, a:hover, a:link, a:visited, a:active {
-  text-decoration: none;
+/* 通用列表样式清除 */
+ol,
+ul {
+  list-style: none;
 }
 
-ol, ul {
-	list-style: none;
-}
-
+/* 重置表格元素 */
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
-input, textarea {
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+  cursor: pointer;
+  appearance: button;
+  -webkit-appearance: button;
+}
+
+/* 修复无法点击的表单元素内的`::-moz-focus-inner`边距问题 */
+button::-moz-focus-inner,
+[type='button']::-moz-focus-inner,
+[type='reset']::-moz-focus-inner,
+[type='submit']::-moz-focus-inner {
+  padding: 0;
+  border-style: none;
+}
+
+input,
+textarea {
   outline: none;
   resize: none;
+  appearance: none;
   -webkit-appearance: none;
   -webkit-tap-highlight-color: transparent;
 }
 
-button {
-  border: 1px solid transparent;
+a {
+  background-color: transparent;
+  text-decoration: none;
   cursor: pointer;
+}
+
+a:hover,
+a:link,
+a:visited,
+a:active {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+[hidden] {
+  display: none;
 }
