@@ -15,7 +15,7 @@ service.interceptors.request.use(
   error => {
     return new Promise((resolve, reject) => {
       // 处理请求错误
-      console.log('请求错误==>', error)
+      console.error('请求错误==>', error)
       reject(error)
     })
   }
@@ -35,7 +35,7 @@ service.interceptors.response.use(
   error => {
     return new Promise((resolve, reject) => {
       // 处理响应错误
-      console.log('响应错误==>', error)
+      console.error('响应错误==>', error)
       reject(error)
     })
   }

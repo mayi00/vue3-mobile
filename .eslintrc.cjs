@@ -56,7 +56,7 @@ module.exports = {
     // 是否必须使用 if () {} 中的 {}
     curly: [1, 'multi-line'],
     // switch 语句最后必须有 default
-    'default-case': 1,
+    'default-case': 0,
     // switch 语句中的 default 子句放在最后
     'default-case-last': 1,
     // 对象访问符的位置，换行的时候在行首还是行尾
