@@ -48,15 +48,17 @@ export default ({ mode, command }) => {
       open: true,
       // 反向代理
       proxy: {
+        // 极速数据API
+        '/proxy-jisuapi': {
+          target: env.VITE_APP_BASE_URL_JISUAPI,
+          changeOrigin: true,
+          rewrite: path => path.replace(/^\/proxy-jisuapi/, '')
+        },
+        // 青云客聊天机器人接口
         [env.VITE_APP_BASE_API_QINGYUNKE]: {
           target: env.VITE_APP_BASE_URL_QINGYUNKE,
           changeOrigin: true,
           rewrite: path => path.replace(new RegExp(`^${env.VITE_APP_BASE_API_QINGYUNKE}`), '')
-        },
-        [env.VITE_APP_BASE_PROXY]: {
-          target: env.VITE_APP_BASE_URL,
-          changeOrigin: true,
-          rewrite: path => path.replace(new RegExp(`^${env.VITE_APP_BASE_PROXY}`), '')
         }
       }
     },
