@@ -3,7 +3,11 @@ module.exports = {
     browser: true,
     es2021: true
   },
-  extends: ['eslint:recommended', 'plugin:vue/vue3-essential', './vite/.eslintrc-auto-import.json', './globals.json'],
+  globals: {
+    process: true,
+    __dirname: true
+  },
+  extends: ['eslint:recommended', 'plugin:vue/vue3-essential', './vite/.eslintrc-auto-import.json'],
   overrides: [
     {
       env: {
@@ -32,13 +36,13 @@ module.exports = {
     // 在定义的范围内强制使用变量
     'block-scoped-var': 1,
     // 大括号内要加空格
-    'block-spacing': [1, 'always'],
+    'block-spacing': [2, 'always'],
     // 大括号风格
     'brace-style': [1, '1tbs'],
     // 强制驼峰命名
     camelcase: 1,
     // 对象字面量项尾不能有逗号
-    'comma-dangle': [1, 'never'],
+    'comma-dangle': [2, 'never'],
     // 逗号前后的空格
     'comma-spacing': [1, { before: false, after: true }],
     // 逗号风格，换行时在行尾
@@ -220,7 +224,7 @@ module.exports = {
     // 禁止在使用new构造一个实例后不赋值
     'no-new': 1,
     // 禁止使用 new Function()
-    'no-new-func': 1,
+    'no-new-func': 2,
     // 禁止使用 new Object()
     'no-new-object': 2,
     // 禁止使用 new String、new Boolean、new Number
