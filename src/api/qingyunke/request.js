@@ -41,13 +41,15 @@ service.interceptors.response.use(
   }
 )
 
-const request = async ({ url, method, params, data, timeout }) => {
+const request = async ({ url, method, params, data, timeout, headers, responseType }) => {
   return await service({
     url,
     method,
     params,
     data,
-    timeout
+    timeout,
+    headers,
+    responseType
   })
 }
 
