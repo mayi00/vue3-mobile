@@ -23,6 +23,7 @@ service.interceptors.request.use(
 // 响应拦截器
 service.interceptors.response.use(
   response => {
+    console.log('【响应】', response)
     return new Promise((resolve, reject) => {
       if (response.status === 200) {
         resolve(response.data)
@@ -40,13 +41,15 @@ service.interceptors.response.use(
   }
 )
 
-const request = async ({ url, method, params, data, timeout }) => {
+const request = async ({ url, method, params, data, timeout, headers, responseType }) => {
   return await service({
     url,
     method,
     params,
     data,
-    timeout
+    timeout,
+    headers,
+    responseType
   })
 }
 

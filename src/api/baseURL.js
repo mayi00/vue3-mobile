@@ -6,10 +6,10 @@ export const base = () => {
       jisuapi = '/proxy-jisuapi'
       break
     case 'test':
-      jisuapi = '/proxy-jisuapi'
+      jisuapi = ''
       break
     case 'production':
-      jisuapi = '/proxy-jisuapi'
+      jisuapi = ''
       break
   }
   return {
