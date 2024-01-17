@@ -51,5 +51,14 @@ export const routes = [
     meta: {
       title: '电子签名'
     }
+  },
+  {
+    path: '/aes',
+    name: 'Aes',
+    component: () => import('@/views/aes/index.vue'),
+    meta: {
+      title: 'AES加解密',
+      showTopNavBar: true
+    }
   }
 ]
