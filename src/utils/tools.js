@@ -11,3 +11,10 @@
 export const getAssetsImage = name => {
   return new URL(`/src/assets/images/${name}`, import.meta.url).href
 }
+
+// 引入 /assets/images 目录下的图片
+export const getImage = name => {
+  const path = `../assets/images/${name}`
+  const modules = import.meta.globEager('../assets/images/*')
+  return modules[path].default
+}

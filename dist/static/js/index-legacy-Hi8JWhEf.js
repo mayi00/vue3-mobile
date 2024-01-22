@@ -1,1 +1,0 @@
-System.register(["./.pnpm-legacy-pplLCRMT.js"],(function(e,t){"use strict";var n,r,s;return{setters:[e=>{n=e._,r=e.c,s=e.o}],execute:function(){const t={class:""};e("default",n({},[["render",function(e,n){return s(),r("div",t," Home ")}]]))}}}));
