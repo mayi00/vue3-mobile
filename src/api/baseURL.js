@@ -1,5 +1,4 @@
-/* eslint-disable */
-export const base = () => {
+export default () => {
   let jisuapi = ''
   switch (process.env.VITE_NODE_ENV) {
     case 'development':
@@ -11,6 +10,7 @@ export const base = () => {
     case 'production':
       jisuapi = ''
       break
+    // no default
   }
   return {
     jisuapi

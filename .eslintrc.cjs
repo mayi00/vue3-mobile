@@ -40,7 +40,7 @@ module.exports = {
     // 大括号风格
     'brace-style': [1, '1tbs'],
     // 强制驼峰命名
-    camelcase: 1,
+    camelcase: 0,
     // 对象字面量项尾不能有逗号
     'comma-dangle': [2, 'never'],
     // 逗号前后的空格
@@ -60,7 +60,7 @@ module.exports = {
     // 是否必须使用 if () {} 中的 {}
     curly: [1, 'multi-line'],
     // switch 语句最后必须有 default
-    'default-case': 0,
+    'default-case': 1,
     // switch 语句中的 default 子句放在最后
     'default-case-last': 1,
     // 对象访问符的位置，换行的时候在行首还是行尾
@@ -86,7 +86,7 @@ module.exports = {
     // 命名检测
     'id-match': 0,
     // 缩进风格，使用2个空格
-    indent: [1, 2],
+    indent: [1, 2, { SwitchCase: 1 }],
     // 声明时必须赋初值
     'init-declarations': 0,
     // 对象字面量中冒号的前后空格
