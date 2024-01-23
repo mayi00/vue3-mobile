@@ -1,5 +1,9 @@
-<script setup name="Aes">
+<script setup>
 import { encrypt, decrypt, encryptECB, decryptECB } from '@/utils/aesUtils.js'
+
+defineOptions({
+  name: 'Aes'
+})
 
 const secretKey = 'WdY1gRxcJXKRgiLv'
 const secretIv = 'WdY1gRxcJXKRgiLv'
@@ -16,8 +20,7 @@ console.log('decECB', decECB)
 </script>
 
 <template>
-  <div class="">
-  </div>
+  <div class=""></div>
 </template>
 
 <style lang="less" scoped></style>

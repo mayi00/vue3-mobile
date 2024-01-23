@@ -6,7 +6,11 @@
  * @LastEditTime : 2024-01-13
  * @FilePath     : \h5-vite5\src\components\TopNavBar.vue
 -->
-<script setup name="TopNavBar">
+<script setup>
+defineOptions({
+  name: 'TopNavBar'
+})
+
 defineProps({
   title: { type: [String, Number], default: 'H5-Vite5' },
   showLeftIcon: { type: Boolean, default: true },
@@ -30,10 +34,10 @@ function handleClickRight() {
 <template>
   <header class="navbar-header">
     <van-nav-bar :title="title" @click-left="handleClickLeft" @click-right="handleClickRight">
-      <template #left v-if="showLeftIcon">
+      <template v-if="showLeftIcon" #left>
         <van-icon :name="leftIcon" size="16px" color="var(--primary-text-color)"></van-icon>
       </template>
-      <template #right v-if="showRightIcon">
+      <template v-if="showRightIcon" #right>
         <van-icon :name="rightIcon" size="16px" color="var(--primary-text-color)"></van-icon>
       </template>
     </van-nav-bar>

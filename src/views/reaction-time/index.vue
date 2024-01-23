@@ -1,13 +1,9 @@
-<!--
- * @Description  : 反应时间测试
- * @Author       : hzf
- * @Date         : 2022-08-28
- * @LastEditors  : hzf
- * @LastEditTime : 2024-01-14
- * @FilePath     : \h5-vite5\src\views\reaction-time\index.vue
--->
-<script setup name="ReactionTime">
+<script setup>
 import { getRandom } from '@/utils/utils.js'
+
+defineOptions({
+  name: 'ReactionTime'
+})
 
 const start = ref(true)
 const wait = ref(false)
