@@ -44,14 +44,14 @@ export const routes = [
       title: '反应时间测试'
     }
   },
-  {
-    path: '/e-signature',
-    name: 'ESignature',
-    component: () => import('@/views/e-signature/index.vue'),
-    meta: {
-      title: '电子签名'
-    }
-  },
+  // {
+  //   path: '/e-signature',
+  //   name: 'ESignature',
+  //   component: () => import('@/views/e-signature/index.vue'),
+  //   meta: {
+  //     title: '电子签名'
+  //   }
+  // },
   {
     path: '/aes',
     name: 'Aes',

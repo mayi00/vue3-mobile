@@ -7,7 +7,13 @@ module.exports = {
     process: true,
     __dirname: true
   },
-  extends: ['eslint:recommended', 'plugin:vue/vue3-essential', './vite/.eslintrc-auto-import.json'],
+  extends: [
+    'eslint:recommended',
+    'plugin:vue/vue3-essential',
+    'plugin:vue/vue3-recommended',
+    './vite/.eslintrc-auto-import.json',
+    'prettier'
+  ],
   overrides: [
     {
       env: {
@@ -23,8 +29,9 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module'
   },
-  plugins: ['vue'],
+  plugins: ['vue', 'prettier'],
   rules: {
+    'prettier/prettier': [1],
     // 在对象和类中使用 getter、setter
     'accessor-pairs': 0,
     // 数组内保持一致的间距，方括号内不加空格

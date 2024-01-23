@@ -1,7 +1,11 @@
-<script setup name="Qingyunke">
+<script setup>
 import ChatUser from './chat-user.vue'
 import ChatRobot from './chat-robot.vue'
 import api from '@/api/qingyunke'
+
+defineOptions({
+  name: 'Qingyunke'
+})
 
 // 输入的内容
 const inputValue = ref('')
@@ -57,17 +61,21 @@ function getAnswer(val) {
     appid: '0',
     msg: val
   }
-  api.getQingyunke(params).then(res => {
-    if (res.result === 0) {
-      chat.content = res.content.replace(/{br}/g, '</br>').replace(/\[/g, '【').replace(/\]/g, '】')
-    } else {
-      chat.content = '正在学习中~'
-    }
-  }).catch(() => {
-    chat.content = '出错了~'
-  }).finally(() => {
-    chatList.push(chat)
-  })
+  api
+    .getQingyunke(params)
+    .then(res => {
+      if (res.result === 0) {
+        chat.content = res.content.replace(/{br}/g, '</br>').replace(/\[/g, '【').replace(/\]/g, '】')
+      } else {
+        chat.content = '正在学习中~'
+      }
+    })
+    .catch(() => {
+      chat.content = '出错了~'
+    })
+    .finally(() => {
+      chatList.push(chat)
+    })
 }
 </script>
 
@@ -84,8 +92,14 @@ function getAnswer(val) {
     </main>
     <!-- 输入区域 -->
     <footer class="footer">
-      <textarea ref="refInput" v-model.trim="inputValue" class="textarea"
-        placeholder="请输入..." maxlength="1000" @keydown.enter="handleKeydownEnter"></textarea>
+      <textarea
+        ref="refInput"
+        v-model.trim="inputValue"
+        class="textarea"
+        placeholder="请输入..."
+        maxlength="1000"
+        @keydown.enter="handleKeydownEnter"
+      ></textarea>
       <van-button type="primary" size="small" class="send-btn" @click="handleSend">发送</van-button>
     </footer>
   </div>

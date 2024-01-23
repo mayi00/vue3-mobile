@@ -44,21 +44,40 @@ function handleClear() {
 }
 // 确定
 function handleConfirm() {
-  refEsign.value.generate().then(res => {
-    downloadImageByBase64(res, '您的签名')
-  }).catch(err => {
-    console.warn(err)
-  })
+  refEsign.value
+    .generate()
+    .then(res => {
+      downloadImageByBase64(res, '您的签名')
+    })
+    .catch(err => {
+      console.warn(err)
+    })
 }
 </script>
 
 <template>
   <div class="esign-container">
     <div class="esign-warpper">
-      <vue-esign v-if="orientation === 'portrait'" ref="refEsign" v-model:bgColor="bgColor" :lineWidth="5"
-        lineColor="#000000" :width="width" :height="height" :isClearBgColor="false" />
-      <vue-esign v-if="orientation === 'landscape'" ref="refEsign" v-model:bgColor="bgColor" :lineWidth="4"
-        lineColor="#000000" :width="width" :height="height" :isClearBgColor="false" />
+      <vue-esign
+        v-if="orientation === 'portrait'"
+        ref="refEsign"
+        v-model:bgColor="bgColor"
+        :lineWidth="5"
+        lineColor="#000000"
+        :width="width"
+        :height="height"
+        :isClearBgColor="false"
+      />
+      <vue-esign
+        v-if="orientation === 'landscape'"
+        ref="refEsign"
+        v-model:bgColor="bgColor"
+        :lineWidth="4"
+        lineColor="#000000"
+        :width="width"
+        :height="height"
+        :isClearBgColor="false"
+      />
     </div>
     <div class="btn-warpper">
       <div class="btn clear-btn" @click.stop="handleClear">
@@ -98,7 +117,7 @@ function handleConfirm() {
       align-items: center;
       flex: 1;
       width: 100%;
-      border: 1PX solid #1989fa;
+      border: 1px solid #1989fa;
 
       .btn-text {
         white-space: nowrap;
@@ -134,7 +153,7 @@ function handleConfirm() {
   .btn-warpper {
     display: flex;
     height: 12%;
-    font-size: 16PX;
+    font-size: 16px;
 
     .btn {
       display: flex;
@@ -142,7 +161,7 @@ function handleConfirm() {
       align-items: center;
       flex: 1;
       height: 100%;
-      border: 1PX solid #1989fa;
+      border: 1px solid #1989fa;
     }
 
     .clear-btn {

@@ -3,7 +3,6 @@ import createAutoImport from './plugins/auto-import'
 import createComponents from './plugins/components'
 import createEslintPlugin from './plugins/eslint-plugin'
 import createLegacy from './plugins/legacy'
-import createSetupExtend from './plugins/setup-extend'
 import createVConsole from './plugins/vconsole'
 
 export default function createVitePlugins(env) {
@@ -13,7 +12,6 @@ export default function createVitePlugins(env) {
     createComponents(),
     createEslintPlugin(),
     createLegacy(),
-    createSetupExtend(),
     createVConsole(env)
   ]
   return plugins

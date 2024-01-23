@@ -1,5 +1,9 @@
-<script setup name="QuickEntry">
+<script setup>
 import { routes } from '@/router/routes.js'
+
+defineOptions({
+  name: 'QuickEntry'
+})
 
 const router = useRouter()
 

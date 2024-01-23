@@ -1,5 +1,5 @@
 import request from '../request'
-import { base } from '../baseURL'
+import base from '../baseURL'
 
 const { jisuapi } = base()
 

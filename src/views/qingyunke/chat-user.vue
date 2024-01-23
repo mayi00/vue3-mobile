@@ -1,5 +1,9 @@
-<script setup name="ChatUser">
+<script setup>
 import { getAssetsImage } from '@/utils/tools.js'
+
+defineOptions({
+  name: 'ChatUser'
+})
 
 defineProps({
   chat: { type: Object, required: true }

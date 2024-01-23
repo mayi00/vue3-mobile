@@ -20,8 +20,14 @@ router.afterEach(to => {
 
 <template>
   <div class="app-container">
-    <TopNavBar v-if="showTopNavBar" :title="topNavBarTitle" :show-left-icon="showTopNavBarLeftIcon"
-      :show-right-icon="showTopNavBarRightIcon" @on-click-left="handleClickLeft" @on-click-right="handleClickRight">
+    <TopNavBar
+      v-if="showTopNavBar"
+      :title="topNavBarTitle"
+      :show-left-icon="showTopNavBarLeftIcon"
+      :show-right-icon="showTopNavBarRightIcon"
+      @on-click-left="handleClickLeft"
+      @on-click-right="handleClickRight"
+    >
     </TopNavBar>
     <main class="app-main" :class="showTopNavBar ? 'has-navbar' : 'no-navbar'">
       <router-view />
