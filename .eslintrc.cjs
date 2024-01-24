@@ -375,6 +375,47 @@ module.exports = {
      * for vue
      * 以下是针对 vue 相关的校验
      */
+    // 组件的 name 使用多个单词组成
+    'vue/multi-word-component-names': 0,
+    // watch中禁止使用箭头函数
+    'vue/no-arrow-functions-in-watch': 0,
+    // 计算属性禁止包含异步方法
+    'vue/no-async-in-computed-properties': 2,
+    // 禁止错误的子节点
+    'vue/no-child-content': 2,
+    // 数据中无计算属性
+    'vue/no-computed-properties-in-data': '2',
+    // 禁止二级键名重复
+    'vue/no-dupe-keys': 0,
+    // v-if/v-else-if 中禁止出现重复条件
+    'vue/no-dupe-v-else-if': 2,
+    // 禁止出现重复的属性
+    'vue/no-duplicate-attributes': 2,
+    // <script setup> 中禁止导出
+    'vue/no-export-in-script-setup': 1,
+    // 禁止对 props 直接进行修改
+    'vue/no-mutating-props': 2,
+    // 禁止出现语法错误
+    'vue/no-parsing-error': 2,
+    // ref变量必须通过 .value 的方式读取或修改
+    'vue/no-ref-as-operand': 2,
+    // 组件名禁止使用保留字
+    'vue/no-reserved-component-names': 2,
+    // Vue中键名禁止使用Vue的保留字
+    'vue/no-reserved-keys': 2,
+    // Vue中props禁止使用Vue的保留字
+    'vue/no-reserved-props': 2,
+    'vue/no-shared-component-data': 2,
+    // 禁止在计算属性中修改其他变量或属性
+    'vue/no-side-effects-in-computed-properties': 1,
+    // 禁止 <template> 添加 key 属性，Vue3可以这么使用，Vue2禁止这样使用
+    'vue/no-template-key': 0,
+    // 禁止在 <textarea> 中出现 {{ message }}
+    'vue/no-textarea-mustache': 2,
+    // 禁止有未使用的组件引入
+    'vue/no-unused-components': 2,
+
+
     // 限制自定义组件的属性风格
     'vue/attribute-hyphenation': 0,
     // html 的结束标签必须符合规定
@@ -387,34 +428,16 @@ module.exports = {
     'vue/jsx-uses-vars': 2,
     // 限制每行允许的最多属性数量
     'vue/max-attributes-per-line': 0,
-    // 组件的 name 使用多个单词组成
-    'vue/multi-word-component-names': 0,
     // 限制组件的 name 属性的值的风格
     'vue/name-property-casing': 0,
-    // 计算属性禁止包含异步方法
-    'vue/no-async-in-computed-properties': 2,
     // 禁止出现难以理解的 v-if 和 v-for
     'vue/no-confusing-v-for-v-if': 0,
     // 禁止使用 slot 属性，禁止 slot="xxx"，允许 v-slot:xxx
     'vue/no-deprecated-slot-attribute': 1,
-    // 禁止二级键名重复
-    'vue/no-dupe-keys': 0,
-    // 禁止出现重复的属性
-    'vue/no-duplicate-attributes': 2,
     // 禁止出现连续空格
     'vue/no-multi-spaces': 1,
-    // 禁止对 props 直接进行修改
-    'vue/no-mutating-props': 1,
-    // 禁止出现语法错误
-    'vue/no-parsing-error': 2,
     // 禁止覆盖保留字
     'vue/no-reservered-keys': 0,
-    // 禁止在计算属性中对属性修改
-    'vue/no-side-effects-in-computed-properties': 0,
-    // 禁止 <template> 添加 key 属性
-    'vue/no-template-key': 1,
-    // 禁止在 <textarea> 中出现 {{ message }}
-    'vue/no-textarea-mustache': 2,
     // 禁止出现声明后未被使用的变量或参数
     'vue/no-unused-vars': 1,
     // 禁止模板中出现无用的属性

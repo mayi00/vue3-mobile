@@ -3,7 +3,7 @@
  * @Author       : hzf
  * @Date         : 2024-01-17
  * @LastEditors  : hzf
- * @LastEditTime : 2024-01-17
+ * @LastEditTime : 2024-01-24
  * @FilePath     : \h5-vue3\src\utils\aesUtils.js
  */
 import CryptoJS from 'crypto-js'
@@ -40,17 +40,11 @@ export function decrypt(word, secretKey, secretIv) {
   const key = CryptoJS.enc.Utf8.parse(secretKey)
   const iv = CryptoJS.enc.Utf8.parse(secretIv)
   const encryptedWordArray = CryptoJS.enc.Base64.parse(word)
-  const decrypted = CryptoJS.AES.decrypt(
-    {
-      ciphertext: encryptedWordArray
-    },
-    key,
-    {
-      iv: iv,
-      mode: CryptoJS.mode.CBC,
-      padding: CryptoJS.pad.Pkcs7
-    }
-  )
+  const decrypted = CryptoJS.AES.decrypt({ ciphertext: encryptedWordArray }, key, {
+    iv: iv,
+    mode: CryptoJS.mode.CBC,
+    padding: CryptoJS.pad.Pkcs7
+  })
   return decrypted.toString(CryptoJS.enc.Utf8)
 }
 
