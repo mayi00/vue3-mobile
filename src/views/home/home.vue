@@ -1,5 +1,5 @@
 <script setup>
-import jisuapi from '@/api/jisuapi.js'
+import jisuapi from '@/api/jisuapi'
 
 defineOptions({
   name: 'Home'
