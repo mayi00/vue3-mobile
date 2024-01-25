@@ -1,7 +1,8 @@
 module.exports = {
   env: {
     browser: true,
-    es2021: true
+    es2021: true,
+    node: true
   },
   globals: {
     process: true,
@@ -384,7 +385,7 @@ module.exports = {
     // 禁止错误的子节点
     'vue/no-child-content': 2,
     // 数据中无计算属性
-    'vue/no-computed-properties-in-data': '2',
+    'vue/no-computed-properties-in-data': 2,
     // 禁止二级键名重复
     'vue/no-dupe-keys': 0,
     // v-if/v-else-if 中禁止出现重复条件
