@@ -1,8 +1,16 @@
 {
-  "name": "h5-vite5",
-  "private": true,
+  "name": "vue3-mobile",
   "version": "0.0.1",
   "type": "module",
+  "private": true,
+  "description": "基于 Vue3.4 + Vite5 + Vant4 开发的移动端demo",
+  "keywords": [
+    "Vue",
+    "Vue3",
+    "Vite",
+    "Vant"
+  ],
+  "author": "hzf",
   "scripts": {
     "dev": "vite --mode development",
     "build:dev": "vite build --mode development",

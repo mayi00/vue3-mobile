@@ -5,7 +5,7 @@
  * @Date         : 2024-01-15
  * @LastEditors  : hzf
  * @LastEditTime : 2024-01-15
- * @FilePath     : \h5-vue3\src\api\jisuapi\area.js
+ * @FilePath     : \vue3-mobile\src\api\jisuapi\area.js
  */
 import request from '../request'
 import base from '../baseURL'

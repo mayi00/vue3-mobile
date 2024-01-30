@@ -1,8 +1,6 @@
-dist
 node_modules
-pbulic
+dist
+dist-ssr
+public
 package.json
 *.html
-.vscode
-.idea
-.DS_Store
