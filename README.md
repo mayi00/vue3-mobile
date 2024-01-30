@@ -1,4 +1,4 @@
-# h5-vite5
+# vue3-mobile
 
 > 基于 Vue3.4 + Vite5 + Vant4 开发的移动端demo
 
@@ -22,6 +22,6 @@ pnpm run build:prod
 ## 开发访问
 
 ```bash
-http://localhost:8000/h5-vue3
+http://localhost:8000/vue3-mobile
 
 ```

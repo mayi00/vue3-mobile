@@ -416,7 +416,6 @@ module.exports = {
     // 禁止有未使用的组件引入
     'vue/no-unused-components': 2,
 
-
     // 限制自定义组件的属性风格
     'vue/attribute-hyphenation': 0,
     // html 的结束标签必须符合规定
@@ -443,6 +442,7 @@ module.exports = {
     'vue/no-unused-vars': 1,
     // 禁止模板中出现无用的属性
     'vue/no-useless-template-attributes': 1,
+    'vue/no-v-html': 0,
     // 组件的属性必须为一定的顺序
     'vue/order-in-components': 1,
     // 应该从 vue 导入，实际上配置了 vue API 自动导入后，vue 相关 API 均无需手动导入

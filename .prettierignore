@@ -1,3 +1,5 @@
-build
-pbulic
+node_modules
+dist
+dist-ssr
+public
 *.html

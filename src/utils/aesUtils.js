@@ -4,7 +4,7 @@
  * @Date         : 2024-01-17
  * @LastEditors  : hzf
  * @LastEditTime : 2024-01-24
- * @FilePath     : \h5-vue3\src\utils\aesUtils.js
+ * @FilePath     : \vue3-mobile\src\utils\aesUtils.js
  */
 import CryptoJS from 'crypto-js'
 
