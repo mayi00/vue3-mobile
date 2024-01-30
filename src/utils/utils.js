@@ -7,6 +7,8 @@
  * @FilePath     : \h5-vite5\src\utils\utils.js
  */
 
+import { Decimal } from 'decimal.js'
+
 /**
  * @description  : 获取 [min,max] 之间的随机整数
  * @param         {Number|String} min
@@ -102,4 +104,21 @@ export function base64ToBlob(content) {
     uint8Array[i] = byteString.charCodeAt(i)
   }
   return new Blob([uint8Array], { type: contentType })
+}
+
+/**
+ * @description  :对数字的处理，大数、小数、去除数字首位多余的0、保留n位小数
+ * @param         {String|Number} num 需要处理的数字
+ * @param         {String|Number} n 保留几位小数
+ * @return        {String} 处理后的数字
+ * @Author       : hzf
+ */
+export function formatNumber(num, n) {
+  const decimalNum = new Decimal(num)
+  let result = decimalNum.toFixed(Number(n)).toString()
+  result = result.replace(/^0+/, '')
+  if (/^\./.test(result)) {
+    result = `0${result}`
+  }
+  return result
 }

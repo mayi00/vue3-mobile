@@ -5,7 +5,9 @@ const service = axios.create()
 // 请求拦截器
 service.interceptors.request.use(
   config => {
-    if (!config.timeout) {
+    if (config.timeout === 0) {
+      config.timeout = 0
+    } else if (!config.timeout) {
       config.timeout = 1000 * 10
     }
     console.log('【请求config：】', config)
