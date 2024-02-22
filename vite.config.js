@@ -38,6 +38,12 @@ export default ({ mode, command }) => {
           })
         ]
       },
+      // 指定传递给 CSS 预处理器的选项
+      preprocessorOptions: {
+        less: {
+          math: 'always'
+        }
+      },
       // 在开发过程中是否启用 sourcemap
       devSourcemap: true
     },
