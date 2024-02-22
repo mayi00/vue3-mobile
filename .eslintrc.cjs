@@ -184,7 +184,7 @@ module.exports = {
     // 禁止不必要的 Boolean 转换
     'no-extra-boolean-cast': 1,
     // 禁止非必要的括号
-    'no-extra-parens': 1,
+    'no-extra-parens': [1, 'functions'],
     // 禁止不必要的分号
     'no-extra-semi': 1,
     // 禁止 switch 穿透

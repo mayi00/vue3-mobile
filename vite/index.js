@@ -4,7 +4,7 @@ import createComponents from './plugins/components'
 import createEslintPlugin from './plugins/eslint-plugin'
 import createLegacy from './plugins/legacy'
 import createVConsole from './plugins/vconsole'
-import createVueDevTools from './plugins/vue-devtools'
+// import createVueDevTools from './plugins/vue-devtools'
 
 export default function createVitePlugins(env) {
   const plugins = [
@@ -13,8 +13,8 @@ export default function createVitePlugins(env) {
     createComponents(),
     createEslintPlugin(),
     createLegacy(),
-    createVConsole(env),
-    createVueDevTools()
+    createVConsole(env)
+    // createVueDevTools()
   ]
   return plugins
 }
