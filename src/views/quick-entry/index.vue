@@ -27,9 +27,9 @@ function handleRouterJump(path) {
 
 <style lang="less" scoped>
 .entry-container {
+  overflow-y: auto;
   height: 100%;
   background-color: #fff;
-  overflow-y: auto;
 }
 
 .route-wrapper {

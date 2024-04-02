@@ -37,9 +37,9 @@ router.afterEach(to => {
 
 <style lang="less" scoped>
 .app-container {
+  overflow: hidden;
   width: 100%;
   height: 100%;
-  overflow: hidden;
 }
 
 .app-main {

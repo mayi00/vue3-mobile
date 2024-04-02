@@ -1,9 +1,8 @@
 *,
 ::before,
 ::after {
-  margin: 0;
   padding: 0;
-  font: inherit;
+  margin: 0;
   font-size: 100%;
   vertical-align: baseline;
   word-break: break-all;
@@ -13,12 +12,11 @@
 html,
 body {
   line-height: 1;
-  text-rendering: optimizeLegibility;
+  text-rendering: optimizelegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
-  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -43,7 +41,6 @@ button,
 [type='submit'] {
   cursor: pointer;
   appearance: button;
-  -webkit-appearance: button;
 }
 
 /* 修复无法点击的表单元素内的`::-moz-focus-inner`边距问题 */
@@ -60,13 +57,12 @@ textarea {
   outline: none;
   resize: none;
   appearance: none;
-  -webkit-appearance: none;
   -webkit-tap-highlight-color: transparent;
 }
 
 a {
-  background-color: transparent;
   text-decoration: none;
+  background-color: transparent;
   cursor: pointer;
 }
 

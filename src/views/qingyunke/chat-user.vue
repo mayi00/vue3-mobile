@@ -55,8 +55,8 @@ defineProps({
 }
 
 .avatar-box {
+  margin-left: 8px;
   width: 40px;
   height: 40px;
-  margin-left: 8px;
 }
 </style>

@@ -105,5 +105,3 @@ function getYijuAuthor() {
     <van-button type="danger" @click="getYijuAuthor">名言作者</van-button>
   </div>
 </template>
-
-<style lang="less" scoped></style>

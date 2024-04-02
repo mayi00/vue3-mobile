@@ -22,5 +22,3 @@ console.log('decECB', decECB)
 <template>
   <div class=""></div>
 </template>
-
-<style lang="less" scoped></style>
