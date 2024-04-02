@@ -114,9 +114,9 @@ function getAnswer(val) {
 }
 
 .main {
-  flex: 1;
-  padding: 8px;
   overflow-y: auto;
+  padding: 8px;
+  flex: 1;
 
   .chat-list {
     min-height: 100%;
@@ -133,16 +133,16 @@ function getAnswer(val) {
   padding: 8px 16px;
   height: 56px;
   background-color: #f3f3f3;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 0 12px rgb(0 0 0 / 12%);
 
   .textarea {
-    flex: 1;
     padding: 4px 8px;
     height: 40px;
-    resize: none;
-    line-height: 20px;
     border: 0;
     border-radius: 8px;
+    resize: none;
+    flex: 1;
+    line-height: 20px;
 
     // 隐藏滚动条
     &::-webkit-scrollbar {

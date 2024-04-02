@@ -126,13 +126,13 @@ function handleConfirm() {
     }
 
     .clear-btn {
-      background-color: #fff;
       color: #1989fa;
+      background-color: #fff;
     }
 
     .confirm-btn {
-      background-color: #1989fa;
       color: #fff;
+      background-color: #1989fa;
     }
   }
 }
@@ -165,13 +165,13 @@ function handleConfirm() {
     }
 
     .clear-btn {
-      background-color: #fff;
       color: #1989fa;
+      background-color: #fff;
     }
 
     .confirm-btn {
-      background-color: #1989fa;
       color: #fff;
+      background-color: #1989fa;
     }
   }
 }

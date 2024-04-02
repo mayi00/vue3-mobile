@@ -3,8 +3,8 @@
   --white: #fff;
 
   /* 主要阴影 */
-  --primary-shadow: 10px 0 10px -10px rgba(0, 0, 0, 0.12);
+  --primary-shadow: 10px 0 10px -10px rgb(0 0 0 / 12%);
 
   /* 常规阴影 */
-  --regular-shadow: 0 0 12px rgba(0, 0, 0, 0.12);
+  --regular-shadow: 0 0 12px rgb(0 0 0 / 12%);
 }
