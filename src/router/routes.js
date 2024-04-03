@@ -1,7 +1,7 @@
 /**
- * showTopNavBar：是否展示顶部导航栏，true-展示 false-不展示，不设置则默认不展示
- * showTopNavBarLeftIcon-是否展示顶部导航栏的左侧图标，true-展示 false-不展示，不设置则默认展示
- * showTopNavBarRightIcon-是否展示顶部导航栏的右侧图标，true-展示 false-不展示，不设置则默认不展示
+ * showNavbar：是否展示顶部导航栏，true-展示 false-不展示，默认false
+ * showNavbarLeftIcon-是否展示顶部导航栏的左侧图标，true-展示 false-不展示，默认true
+ * showNavbarRightIcon-是否展示顶部导航栏的右侧图标，true-展示 false-不展示，默认false
  */
 export const routes = [
   {
@@ -22,8 +22,8 @@ export const routes = [
     component: () => import('@/views/home/home.vue'),
     meta: {
       title: '主页',
-      showTopNavBar: true,
-      showTopNavBarRightIcon: true
+      showNavbar: true,
+      showNavbarRightIcon: true
     }
   },
   {
@@ -32,8 +32,8 @@ export const routes = [
     component: () => import('@/views/qingyunke/index.vue'),
     meta: {
       title: '聊天机器人',
-      showTopNavBar: true,
-      showTopNavBarLeftIcon: false
+      showNavbar: true,
+      showNavbarLeftIcon: false
     }
   },
   {
@@ -50,7 +50,7 @@ export const routes = [
     component: () => import('@/views/aes/index.vue'),
     meta: {
       title: 'AES加解密',
-      showTopNavBar: true
+      showNavbar: true
     }
   }
 ]
