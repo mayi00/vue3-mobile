@@ -9,27 +9,27 @@ const useAppStore = defineStore('app', {
   state: () => {
     return {
       // 顶部导航栏的显示/隐藏
-      showTopNavBar: true,
+      showNavbar: true,
       // 顶部导航栏左侧图标的显示/隐藏
-      showTopNavBarLeftIcon: true,
+      showNavbarLeftIcon: true,
       // 顶部导航栏右侧图标的显示/隐藏
-      showTopNavBarRightIcon: false,
+      showNavbarRightIcon: false,
       // 顶部导航栏的title
-      topNavBarTitle: ''
+      navbarTitle: ''
     }
   },
   actions: {
     // 设置顶部导航栏的显示/隐藏
-    setTopNavBar(val) {
-      this.showTopNavBar = val
+    setNavbar(val) {
+      this.showNavbar = val
     },
     // 设置顶部导航栏左侧图标的显示/隐藏
-    setTopNavBarLeftIcon(val) {
-      this.showTopNavBarLeftIcon = val
+    setNavbarLeftIcon(val) {
+      this.showNavbarLeftIcon = val
     },
     // 设置顶部导航栏右侧图标的显示/隐藏
-    setTopNavBarRightIcon(val) {
-      this.showTopNavBarRightIcon = val
+    setNavbarRightIcon(val) {
+      this.showNavbarRightIcon = val
     }
   }
 })

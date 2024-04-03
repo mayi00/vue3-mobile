@@ -1,7 +1,7 @@
 <script setup>
 import useAppStore from '@/store/modules/app.js'
 
-const { showTopNavBar, topNavBarTitle, showTopNavBarLeftIcon, showTopNavBarRightIcon } = storeToRefs(useAppStore())
+const { showNavbar, navbarTitle, showNavbarLeftIcon, showNavbarRightIcon } = storeToRefs(useAppStore())
 const router = useRouter()
 
 // 点击左侧按钮
@@ -14,22 +14,21 @@ function handleClickRight() {
 }
 
 router.afterEach(to => {
-  topNavBarTitle.value = to.meta?.title
+  navbarTitle.value = to.meta?.title
 })
 </script>
 
 <template>
   <div class="app-container">
-    <TopNavBar
-      v-if="showTopNavBar"
-      :title="topNavBarTitle"
-      :show-left-icon="showTopNavBarLeftIcon"
-      :show-right-icon="showTopNavBarRightIcon"
+    <BaseNavbar
+      v-if="showNavbar"
+      :title="navbarTitle"
+      :show-left-icon="showNavbarLeftIcon"
+      :show-right-icon="showNavbarRightIcon"
       @on-click-left="handleClickLeft"
       @on-click-right="handleClickRight"
-    >
-    </TopNavBar>
-    <main class="app-main" :class="showTopNavBar ? 'has-navbar' : 'no-navbar'">
+    />
+    <main class="app-main" :class="showNavbar ? 'has-navbar' : 'no-navbar'">
       <router-view />
     </main>
   </div>
