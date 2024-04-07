@@ -1,4 +1,5 @@
 module.exports = {
+  // 继承推荐规范配置
   extends: ['stylelint-config-standard', 'stylelint-config-recommended-less', 'stylelint-config-standard-vue'],
   plugins: ['stylelint-order'],
   // 不同格式的文件指定自定义语法
@@ -22,6 +23,7 @@ module.exports = {
         ignorePseudoElements: ['v-deep']
       }
     ],
+    // 允许 global 、export 、deep伪类
     'selector-pseudo-class-no-unknown': [
       true,
       {
