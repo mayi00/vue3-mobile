@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const service = axios.create({
-  baseURL: import.meta.env.VITE_APP_BASE_API_QINGYUNKE
+  baseURL: import.meta.env.VITE_BASE_PROXY_QINGYUNKE
 })
 
 // 请求拦截器

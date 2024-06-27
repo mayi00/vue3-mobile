@@ -1,10 +1,11 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import { routes } from './routes'
-import useAppStore from '@/store/modules/app.js'
+import  jisuRoutes  from './jisu'
+import { useAppStore } from '@/store'
 
 const router = createRouter({
   history: createWebHashHistory(),
-  routes,
+  routes: [...routes, ...jisuRoutes],
   // 切换路由时自动滚动到页面顶部
   scrollBehavior() {
     return { left: 0, top: 0 }

@@ -133,7 +133,7 @@ function getAnswer(val) {
   padding: 8px 16px;
   height: 56px;
   background-color: #f3f3f3;
-  box-shadow: 0 0 12px rgb(0 0 0 / 12%);
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.12);
 
   .textarea {
     padding: 4px 8px;

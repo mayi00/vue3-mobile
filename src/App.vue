@@ -1,5 +1,5 @@
 <script setup>
-import useAppStore from '@/store/modules/app.js'
+import { useAppStore } from '@/store'
 
 const { showNavbar, navbarTitle, showNavbarLeftIcon, showNavbarRightIcon } = storeToRefs(useAppStore())
 const router = useRouter()
