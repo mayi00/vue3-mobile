@@ -1,10 +1,15 @@
 import axios from 'axios'
+import { showLoadingToast, closeToast } from 'vant'
 
 const service = axios.create()
 
 // 请求拦截器
 service.interceptors.request.use(
   config => {
+    showLoadingToast({
+      message: '加载中...',
+      forbidClick: true
+    })
     if (config.timeout === 0) {
       config.timeout = 0
     } else if (!config.timeout) {
@@ -14,6 +19,7 @@ service.interceptors.request.use(
     return config
   },
   error => {
+    closeToast()
     return new Promise((resolve, reject) => {
       // 处理请求错误
       console.error('【请求错误】', error)
@@ -25,8 +31,9 @@ service.interceptors.request.use(
 // 响应拦截器
 service.interceptors.response.use(
   response => {
-    console.log('【响应】', response)
+    closeToast()
     return new Promise((resolve, reject) => {
+      console.log('【响应】', response)
       if (response.status === 200) {
         resolve(response.data)
       } else {
@@ -35,6 +42,7 @@ service.interceptors.response.use(
     })
   },
   error => {
+    closeToast()
     return new Promise((resolve, reject) => {
       // 处理响应错误
       console.error('【响应错误】', error)

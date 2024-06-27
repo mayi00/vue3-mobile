@@ -1,13 +1,12 @@
-import request from '../request'
-import base from '../baseURL'
+import request from './request'
 
-const { jisuapi } = base()
+const baseUrl = import.meta.env.VITE_NODE_ENV === 'development' ? '/proxy-jisuapi' : ''
 
 export default {
   // 名人名言查询
   query(params) {
     return request({
-      url: `${jisuapi}/yiju/query`,
+      url: `${baseUrl}/yiju/query`,
       method: 'get',
       params
     })
@@ -15,7 +14,7 @@ export default {
   // 名言类型
   class(params) {
     return request({
-      url: `${jisuapi}/yiju/class`,
+      url: `${baseUrl}/yiju/class`,
       method: 'get',
       params
     })
@@ -23,7 +22,7 @@ export default {
   // 名言作者
   author(params) {
     return request({
-      url: `${jisuapi}/yiju/author`,
+      url: `${baseUrl}/yiju/author`,
       method: 'get',
       params
     })

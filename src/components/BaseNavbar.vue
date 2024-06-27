@@ -46,6 +46,6 @@ function handleClickRight() {
 
 <style lang="less" scoped>
 .navbar {
-  box-shadow: 0 0 12px rgb(0 0 0 / 12%);
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.12);
 }
 </style>

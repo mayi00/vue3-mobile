@@ -7,16 +7,15 @@
  * @LastEditTime : 2024-01-15
  * @FilePath     : \vue3-mobile\src\api\jisuapi\area.js
  */
-import request from '../request'
-import base from '../baseURL'
+import request from './request'
 
-const { jisuapi } = base()
+const baseUrl = import.meta.env.VITE_NODE_ENV === 'development' ? '/proxy-jisuapi' : ''
 
 export default {
   // 获取全部省份
   province(params) {
     return request({
-      url: `${jisuapi}/area/province`,
+      url: `${baseUrl}/area/province`,
       method: 'get',
       params
     })
@@ -24,7 +23,7 @@ export default {
   // 根据省份获取市
   city(params) {
     return request({
-      url: `${jisuapi}/area/city`,
+      url: `${baseUrl}/area/city`,
       method: 'get',
       params
     })
@@ -32,7 +31,7 @@ export default {
   // 根据市获取区县
   town(params) {
     return request({
-      url: `${jisuapi}/area/town`,
+      url: `${baseUrl}/area/town`,
       method: 'get',
       params
     })

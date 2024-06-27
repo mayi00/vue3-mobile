@@ -7,7 +7,7 @@ defineOptions({
 
 // 获取全部省份数据
 function getAllProvince() {
-  const params = { appkey: process.env.VITE_APP_JISUAPI_APPKEY }
+  const params = { appkey: process.env.VITE_JISUAPI_APPKEY }
   jisuapi.area
     .province(params)
     .then(res => {
@@ -21,7 +21,7 @@ function getAllProvince() {
 function getCity() {
   const params = {
     parentid: '51',
-    appkey: process.env.VITE_APP_JISUAPI_APPKEY
+    appkey: process.env.VITE_JISUAPI_APPKEY
   }
   jisuapi.area
     .city(params)
@@ -36,7 +36,7 @@ function getCity() {
 function getTown() {
   const params = {
     parentid: '162',
-    appkey: process.env.VITE_APP_JISUAPI_APPKEY
+    appkey: process.env.VITE_JISUAPI_APPKEY
   }
   jisuapi.area
     .town(params)
@@ -50,7 +50,7 @@ function getTown() {
 // 名人名言查询
 function getYijuQuery() {
   const params = {
-    appkey: process.env.VITE_APP_JISUAPI_APPKEY,
+    appkey: process.env.VITE_JISUAPI_APPKEY,
     num: 10,
     page: 1,
     classid: 82,
@@ -68,7 +68,7 @@ function getYijuQuery() {
 // 名言类型
 function getYijuClass() {
   const params = {
-    appkey: process.env.VITE_APP_JISUAPI_APPKEY
+    appkey: process.env.VITE_JISUAPI_APPKEY
   }
   jisuapi.yiju
     .class(params)
@@ -82,7 +82,7 @@ function getYijuClass() {
 // 名言作者
 function getYijuAuthor() {
   const params = {
-    appkey: process.env.VITE_APP_JISUAPI_APPKEY
+    appkey: process.env.VITE_JISUAPI_APPKEY
   }
   jisuapi.yiju
     .author(params)
