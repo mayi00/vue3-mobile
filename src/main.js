@@ -8,7 +8,6 @@ import store from './store'
 // rem 布局适配
 import 'amfe-flexible'
 // import VConsole from 'vconsole'
-
 const app = createApp(App)
 console.log('process.env:', process.env)
 console.info('import.meta.env:', import.meta.env)

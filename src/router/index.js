@@ -1,6 +1,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import { routes } from './routes'
-import  jisuRoutes  from './jisu'
+import jisuRoutes from './jisu'
 import { useAppStore } from '@/store'
 
 const router = createRouter({

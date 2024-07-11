@@ -1,9 +1,9 @@
 /*
  * @Description  : 全国省市县行政区划分
  *                 最新全国省、市、县行政区划信息，包含区号、邮编等信息，同时包含国外的国家和地区。
- * @Author       : hzf
+ * @Author       : MDT
  * @Date         : 2024-01-15
- * @LastEditors  : hzf
+ * @LastEditors  : MDT
  * @LastEditTime : 2024-01-15
  * @FilePath     : \vue3-mobile\src\api\jisuapi\area.js
  */

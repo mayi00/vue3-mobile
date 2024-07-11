@@ -1,12 +1,21 @@
 /*
+ * @Description  :
+ * @Author       : MDT
+ * @Date         : 2024-03-27
+ * @LastEditors  : MDT
+ * @LastEditTime : 2024-07-11
+ * @FilePath     : \vue3-mobile\src\utils\utils.js
+ * 代码是写出来给人看的，附带能在机器上运行。
+ * Copyright (c) 2024 by MDT, All Rights Reserved.
+ */
+/*
  * @Description  : 一些通用的工具函数
- * @Author       : hzf
+ * @Author       : MDT
  * @Date         : 2024-01-13
- * @LastEditors  : hzf
+ * @LastEditors  : MDT
  * @LastEditTime : 2024-01-14
  * @FilePath     : \h5-vite5\src\utils\utils.js
  */
-
 import { Decimal } from 'decimal.js'
 
 /**
@@ -14,7 +23,7 @@ import { Decimal } from 'decimal.js'
  * @param         {Number|String} min
  * @param         {Number|String} max
  * @return        {Number}
- * @Author       : hzf
+ * @Author       : MDT
  */
 export function getRandom(min, max) {
   const minNo = Number(min)
@@ -29,7 +38,7 @@ export function getRandom(min, max) {
  * @param         {Boolean} hasLowercase 是否包含小写字母
  * @param         {Boolean} hasNum 是否包含数字
  * @return        {Boolean|String} 生成的字符串
- * @Author       : hzf
+ * @Author       : MDT
  */
 export function getRandomString(length = 32, hasUppercase = true, hasLowercase = true, hasNum = true) {
   const lengthNo = Number(length)
@@ -60,7 +69,7 @@ export function getRandomString(length = 32, hasUppercase = true, hasLowercase =
  * @description  : 判断是否为外部链接
  * @param         {String} path
  * @return        {Boolean}
- * @Author       : hzf
+ * @Author       : MDT
  */
 export function isExternalLink(path) {
   return /^(https?:|mailto:|tel:)/.test(path)
@@ -70,7 +79,7 @@ export function isExternalLink(path) {
  * @description  : base64 转图片下载
  * @param         {String} content base64 格式图片
  * @param         {String} fileName 文件名
- * @Author       : hzf
+ * @Author       : MDT
  */
 export function downloadImageByBase64(content, fileName) {
   const aLink = document.createElement('a')
@@ -88,7 +97,7 @@ export function downloadImageByBase64(content, fileName) {
  * @description  : base64 字符串转 Blob 对象
  * @param         {String} content base64 格式文件
  * @return        {Blob} Blob 对象
- * @Author       : hzf
+ * @Author       : MDT
  */
 export function base64ToBlob(content) {
   const parts = content.split(';base64,')
@@ -111,7 +120,7 @@ export function base64ToBlob(content) {
  * @param         {String|Number} num 需要处理的数字
  * @param         {String|Number} n 保留几位小数
  * @return        {String} 处理后的数字
- * @Author       : hzf
+ * @Author       : MDT
  */
 export function formatNumber(num, n) {
   const decimalNum = new Decimal(num)
