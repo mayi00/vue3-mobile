@@ -1,8 +1,8 @@
 /*
  * @Description  : 本项目专用的一些工具函数
- * @Author       : hzf
+ * @Author       : MDT
  * @Date         : 2024-01-14
- * @LastEditors  : hzf
+ * @LastEditors  : MDT
  * @LastEditTime : 2024-01-14
  * @FilePath     : \h5-vite5\src\utils\tools.js
  */

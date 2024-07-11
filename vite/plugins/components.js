@@ -1,8 +1,8 @@
 /*
  * @Description  : 自动引入 vant组件和 components 文件夹下的组件
- * @Author       : hzf
+ * @Author       : MDT
  * @Date         : 2022-08-27
- * @LastEditors  : hzf
+ * @LastEditors  : MDT
  * @LastEditTime : 2024-01-13
  * @FilePath     : \h5-vite5\vite\plugins\components.js
  */

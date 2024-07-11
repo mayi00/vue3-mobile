@@ -1,8 +1,8 @@
 /*
  * @Description  : AES加密解密
- * @Author       : hzf
+ * @Author       : MDT
  * @Date         : 2024-01-17
- * @LastEditors  : hzf
+ * @LastEditors  : MDT
  * @LastEditTime : 2024-01-24
  * @FilePath     : \vue3-mobile\src\utils\aesUtils.js
  */
@@ -14,7 +14,7 @@ import CryptoJS from 'crypto-js'
  * @param         {String} secretKey 密钥
  * @param         {String} secretIv 偏移量
  * @return        {String} 密文
- * @Author       : hzf
+ * @Author       : MDT
  */
 export function encrypt(word, secretKey, secretIv) {
   const key = CryptoJS.enc.Utf8.parse(secretKey)
@@ -34,7 +34,7 @@ export function encrypt(word, secretKey, secretIv) {
  * @param         {String} secretKey 密钥
  * @param         {String} secretIv 偏移量
  * @return        {String} 明文
- * @Author       : hzf
+ * @Author       : MDT
  */
 export function decrypt(word, secretKey, secretIv) {
   const key = CryptoJS.enc.Utf8.parse(secretKey)
@@ -53,7 +53,7 @@ export function decrypt(word, secretKey, secretIv) {
  * @param         {String} word 明文
  * @param         {String} secretKey 密钥
  * @return        {String} 密文
- * @Author       : hzf
+ * @Author       : MDT
  */
 export function encryptECB(word, secretKey) {
   const key = CryptoJS.enc.Utf8.parse(secretKey)
@@ -70,7 +70,7 @@ export function encryptECB(word, secretKey) {
  * @param         {String} word 密文
  * @param         {String} secretKey 密钥
  * @return        {String} 明文
- * @Author       : hzf
+ * @Author       : MDT
  */
 export function decryptECB(word, secretKey) {
   const key = CryptoJS.enc.Utf8.parse(secretKey)

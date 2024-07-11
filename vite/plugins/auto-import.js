@@ -1,8 +1,8 @@
 /*
  * @Description  : 自动引入 vue 相关 API
- * @Author       : hzf
+ * @Author       : MDT
  * @Date         : 2022-08-27
- * @LastEditors  : hzf
+ * @LastEditors  : MDT
  * @LastEditTime : 2022-08-27
  * @FilePath     : \vue-mobile\vite\plugins\auto-import.js
  */
