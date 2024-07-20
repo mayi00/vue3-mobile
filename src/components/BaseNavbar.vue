@@ -1,10 +1,10 @@
 <!--
- * @Description  :顶部导航栏
- * @Author       : MDT
- * @Date         : 2024-01-13
- * @LastEditors  : MDT
- * @LastEditTime : 2024-04-03
- * @FilePath     : \vue3-mobile\src\components\BaseNavbar.vue
+ * @Description :顶部导航栏
+ * @Author      : MDT
+ * @Date        : 2024-01-13
+ * @LastEditors : MDT
+ * @LastEditTime: 2024-07-20
+ * @FilePath    : \vue3-mobile\src\components\BaseNavbar.vue
 -->
 <script setup>
 defineOptions({
