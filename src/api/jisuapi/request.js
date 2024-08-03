@@ -15,7 +15,7 @@ service.interceptors.request.use(
     } else if (!config.timeout) {
       config.timeout = 1000 * 10
     }
-    console.log('【请求config：】', config)
+    // console.log('【请求config：】', config)
     return config
   },
   error => {
@@ -33,7 +33,7 @@ service.interceptors.response.use(
   response => {
     closeToast()
     return new Promise((resolve, reject) => {
-      console.log('【响应】', response)
+      // console.log('【响应】', response)
       if (response.status === 200) {
         resolve(response.data)
       } else {
@@ -51,8 +51,9 @@ service.interceptors.response.use(
   }
 )
 
-const request = async ({ url, method, params, data, timeout, headers, responseType }) => {
+const request = async ({ baseURL, url, method, params, data, timeout, headers, responseType }) => {
   return await service({
+    baseURL,
     url,
     method,
     params,
