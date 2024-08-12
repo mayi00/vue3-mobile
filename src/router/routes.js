@@ -52,5 +52,14 @@ export const routes = [
       title: 'AES加解密',
       showNavbar: true
     }
+  },
+  {
+    path: '/e-sign',
+    name: 'ESign',
+    component: () => import('@/views/e-sign/e-sign.vue'),
+    meta: {
+      title: 'e-sign',
+      showNavbar: true
+    }
   }
 ]
