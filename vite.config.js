@@ -56,13 +56,13 @@ export default ({ mode, command }) => {
       proxy: {
         // 极速数据API
         '/proxy-jisuapi': {
-          target: env.VITE_BASE_URL_JISUAPI,
+          target: 'https://api.jisuapi.com/',
           changeOrigin: true,
           rewrite: path => path.replace(/^\/proxy-jisuapi/, '')
         },
         // 青云客聊天机器人接口
         [env.VITE_BASE_PROXY_QINGYUNKE]: {
-          target: env.VITE_BASE_URL_QINGYUNKE,
+          target: 'http://api.qingyunke.com/',
           changeOrigin: true,
           rewrite: path => path.replace(new RegExp(`^${env.VITE_BASE_PROXY_QINGYUNKE}`), '')
         }
