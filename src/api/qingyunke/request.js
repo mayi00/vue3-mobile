@@ -1,8 +1,6 @@
 import axios from 'axios'
 
-const service = axios.create({
-  baseURL: import.meta.env.VITE_BASE_PROXY_QINGYUNKE
-})
+const service = axios.create()
 
 // 请求拦截器
 service.interceptors.request.use(
@@ -41,8 +39,9 @@ service.interceptors.response.use(
   }
 )
 
-const request = async ({ url, method, params, data, timeout, headers, responseType }) => {
+const request = async ({ baseURL, url, method, params, data, timeout, headers, responseType }) => {
   return await service({
+    baseURL,
     url,
     method,
     params,

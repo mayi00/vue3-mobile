@@ -1,20 +1,12 @@
 /*
- * @Description  :
- * @Author       : MDT
- * @Date         : 2024-03-27
- * @LastEditors  : MDT
- * @LastEditTime : 2024-07-11
- * @FilePath     : \vue3-mobile\src\utils\utils.js
+ * @Description : 一些通用的工具函数
+ * @Author      : MDT
+ * @Date        : 2024-03-27
+ * @LastEditors : MDT
+ * @LastEditTime: 2024-07-20
+ * @FilePath    : \vue3-mobile\src\utils\utils.js
  * 代码是写出来给人看的，附带能在机器上运行。
  * Copyright (c) 2024 by MDT, All Rights Reserved.
- */
-/*
- * @Description  : 一些通用的工具函数
- * @Author       : MDT
- * @Date         : 2024-01-13
- * @LastEditors  : MDT
- * @LastEditTime : 2024-01-14
- * @FilePath     : \h5-vite5\src\utils\utils.js
  */
 import { Decimal } from 'decimal.js'
 
@@ -32,13 +24,15 @@ export function getRandom(min, max) {
 }
 
 /**
- * @description : 获取随机字符串，传入的 length 为空时，则返回 ''，若 hasUppercase , hasLowercase, hasNum 均不传，则默认全部包含
+ * @description : 获取随机字符串
+ *                传入的 length 为空时，则返回 ''
+ *                若 hasUppercase , hasLowercase, hasNum 均不传，则默认全部包含
  * @param         {Number|String} length 字符串长度，如不传则默认生成32位
  * @param         {Boolean} hasUppercase  是否包含大写字母
  * @param         {Boolean} hasLowercase 是否包含小写字母
  * @param         {Boolean} hasNum 是否包含数字
- * @return        {Boolean|String} 生成的字符串
- * @Author       : MDT
+ * @return        {String} 生成的字符串
+ * @Author      : MDT
  */
 export function getRandomString(length = 32, hasUppercase = true, hasLowercase = true, hasNum = true) {
   const lengthNo = Number(length)
@@ -83,32 +77,29 @@ export function isExternalLink(path) {
  */
 export function downloadImageByBase64(content, fileName) {
   const aLink = document.createElement('a')
-  // new Blob([content])
   const blob = base64ToBlob(content)
-  const evt = document.createEvent('HTMLEvents')
-  // initEvent 不加后两个参数在FF下会报错  事件类型，是否冒泡，是否阻止浏览器的默认行为
-  aLink.download = fileName
-  evt.initEvent('click', true, true)
   aLink.href = URL.createObjectURL(blob)
+  aLink.download = fileName
+  aLink.style.display = 'none'
+  document.body.appendChild(aLink)
   aLink.click()
+  setTimeout(() => {
+    document.body.removeChild(aLink)
+    URL.revokeObjectURL(aLink.href)
+  }, 0)
 }
 
 /**
  * @description  : base64 字符串转 Blob 对象
- * @param         {String} content base64 格式文件
+ * @param         {String} content base64 字符串
  * @return        {Blob} Blob 对象
  * @Author       : MDT
  */
 export function base64ToBlob(content) {
   const parts = content.split(';base64,')
-  // 解析出 mime 类型
   const contentType = parts[0].split(':')[1]
-  // base64 解码得到二进制字符串
   const byteString = window.atob(parts[1])
-  // 创建缓冲数组
-  const arrayBuffer = new ArrayBuffer(byteString.length)
-  // 创建8位无符号整数值的类型化数组
-  const uint8Array = new Uint8Array(arrayBuffer)
+  const uint8Array = new Uint8Array(byteString.length)
   for (let i = 0; i < byteString.length; i++) {
     uint8Array[i] = byteString.charCodeAt(i)
   }
