@@ -10,7 +10,7 @@ function handleClickLeft() {
 }
 // 点击右侧按钮
 function handleClickRight() {
-  console.log('点击右侧按钮')
+  console.log('点击右侧按钮1')
 }
 
 router.afterEach(to => {
