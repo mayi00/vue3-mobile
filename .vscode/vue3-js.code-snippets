@@ -1,12 +1,10 @@
 {
-  "Vue3+defineOptions": {
+  "vue3 js": {
     "scope": "vue",
-    "prefix": "Vue3",
+    "prefix": "vue3 js less",
     "body": [
       "<script setup>",
-      "defineOptions({",
-      "  name: '$1'",
-      "})",
+      "defineOptions({ name: '$1' })",
       "</script>",
       "",
       "<template>",
@@ -16,6 +14,6 @@
       "<style lang=\"less\" scoped></style>",
       ""
     ],
-    "description": "Vue3+defineOptions快速生成模板"
+    "description": "vue3 js 模板"
   }
 }
